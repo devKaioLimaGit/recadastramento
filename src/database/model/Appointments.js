@@ -1,7 +1,7 @@
-const { DataTypes } = require("DataTypes");
+const { DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 
-const Places = connection.define("places", {
+const Appointments = connection.define("appointments", {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -9,26 +9,29 @@ const Places = connection.define("places", {
         primaryKey: true
     },
 
-    unit: {
+    day: {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
 
-    address: {
-        type: DataTypes.STRING(191),
+    unitid: {
+        type: DataTypes.UUID,
         allowNull: false,
     },
 
-    birth: {
+    userid: {
+        type: DataTypes.UUID,
+        allowNull: false,
+    },
+
+    status: {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
-    
-
 
 }, {
-    tableName: "places", 
+    tableName: "appointments",
     timestamps: true,
 });
 
-module.exports = Users;
+module.exports = Appointments;
