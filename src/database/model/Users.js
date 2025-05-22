@@ -1,4 +1,4 @@
-const { DataTypes } = require("DataTypes");
+const { DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 
 const Users = connection.define("users", {
@@ -120,7 +120,7 @@ const Users = connection.define("users", {
         allowNull: false,
     },
 
-    filename: {
+    photo: {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
