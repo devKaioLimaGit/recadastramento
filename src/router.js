@@ -5,6 +5,7 @@ const CreateUsersController = require("./controllers/user/CreateUsersController"
 const CreateUnitsController = require("./controllers/unit/CreateUnitController");
 const UpdateUnitController = require("./controllers/unit/UpdateUnitController");
 const UpdateUsersController = require("./controllers/user/UpdateUsersController");
+const CreateAppointmesntController = require("./controllers/appointments/CreateAppointmesntController");
 const router = Router();
 
 
@@ -19,9 +20,10 @@ router.get("/login", ViewsHome.login);
 
 // Rota de envio:
 router.post("/user", CreateUsersController.handler);
-router.post("/admin/unit", UpdateUnitController.handler);
 router.post("/place", CreateUnitsController.handler);
+router.post("/admin/unit", UpdateUnitController.handler);
 router.post("/admin/user", UpdateUsersController.handler);
+router.post("/admin/appointment", CreateAppointmesntController.handler)
 
 
 module.exports = router;

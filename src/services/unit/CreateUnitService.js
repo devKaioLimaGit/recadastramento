@@ -1,7 +1,7 @@
 const Units = require("../../database/model/Units");
 
 class CreateUnitsService {
-    async execute({ unit, address, capacity }) {
+    async execute({ unit, address }) {
         const unitAlreadyExists = await Units.findOne({ where: { unit } });
 
         if (unitAlreadyExists) {
@@ -10,8 +10,7 @@ class CreateUnitsService {
 
         const unitService = await Units.create({
             unit,
-            address,
-            capacity,
+            address
         });
 
         return unitService;

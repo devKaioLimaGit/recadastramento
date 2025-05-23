@@ -61,8 +61,8 @@ class UpdateUsersService {
             }, { where: { id: id } });
 
             return "Dados do usuário atualizados!";
-        } catch (erro) {
-            throw new Error("Erro ao atualizar dados do usuário!")
+        } catch (error) {
+            throw new Error("Erro ao atualizar dados do usuário!" + error)
         }
 
     }

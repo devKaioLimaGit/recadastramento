@@ -1,10 +1,10 @@
 const Units = require("../../database/model/Units");
 
 class UpdateUnitsService {
-    async execute({ id, unit, address, capacity }) {
+    async execute({ id, unit, address }) {
         try {
             const unitService = await Units.update(
-                { unit, address, capacity },
+                { unit, address },
                 { where: { id } }
             );
 

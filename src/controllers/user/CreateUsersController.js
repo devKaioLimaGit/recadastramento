@@ -30,9 +30,9 @@ class CreateUsersControllers {
                 term,
             } = req.body;
 
-            const CreateUsersService = new CreateUsersService();
+            const createUsersService = new CreateUsersService();
 
-            const userService = await CreateUsersService.execute({
+            const userService = await createUsersService.execute({
                 name,
                 registration,
                 cpf,

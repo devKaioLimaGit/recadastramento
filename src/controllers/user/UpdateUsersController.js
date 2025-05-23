@@ -60,9 +60,10 @@ class CreateUsersControllers {
                 deficiency,
                 photo,
                 term,
+                id
             });
 
-            res.status(200).json(userService);
+            res.status(200).json({message: userService});
         } catch (error) {
             res.status(400).json({ error: error.message });
 

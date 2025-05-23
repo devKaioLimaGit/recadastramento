@@ -3,12 +3,10 @@ const UpdateUnitsService= require("../../services/unit/UpdateUnitService");
 class UpdateUnitController {
     async handler(req, res) {
         try {
-            const {unit, address, capacity } = req.body;
+            const {unit, address } = req.body;
             const id = req.query.id;
-
-            console.log(id)
             const updateUnitsService = new UpdateUnitsService();
-            const unitService = await UpdateUnitsService.execute({ id, unit, address, capacity });
+            const unitService = await updateUnitsService.execute({ id, unit, address });
 
             res.status(200).json({message: unitService})
         } catch (error) {

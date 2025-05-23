@@ -4,36 +4,43 @@ const Users = require("./Users");
 const Units = require("./Units");
 
 const Appointments = connection.define("appointments", {
-    id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        allowNull: false,
-        primaryKey: true
-    },
+  id: {
+    type: DataTypes.UUID,
+    defaultValue: DataTypes.UUIDV4,
+    allowNull: false,
+    primaryKey: true
+  },
 
-    day: {
-        type: DataTypes.STRING(191),
-        allowNull: false,
-    },
+  day: {
+    type: DataTypes.STRING(191),
+    allowNull: false,
+  },
 
-    unitid: {
-        type: DataTypes.UUID,
-        allowNull: false,
-    },
+  turn: {
+    type: DataTypes.STRING(191),
+    allowNull: false,
+  },
 
-    userid: {
-        type: DataTypes.UUID,
-        allowNull: false,
-    },
+  unitid: {
+    type: DataTypes.UUID,
+    allowNull: false,
+  },
 
-    status: {
-        type: DataTypes.STRING(191),
-        allowNull: false,
-    },
+  userid: {
+    type: DataTypes.UUID,
+    allowNull: true,
+  },
+
+  status: {
+    type: DataTypes.STRING(191),
+    allowNull: false,
+    defaultValue: "Não Agendado..."
+  }
+
 
 }, {
-    tableName: "appointments",
-    timestamps: true,
+  tableName: "appointments",
+  timestamps: true,
 });
 
 

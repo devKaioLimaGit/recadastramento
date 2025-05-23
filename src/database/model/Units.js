@@ -17,12 +17,7 @@ const Units = connection.define("units", {
     address: {
         type: DataTypes.STRING(191),
         allowNull: false,
-    },
-
-    capacity: {
-        type: DataTypes.STRING(191),
-        allowNull: false,
-    },
+    }
 
 
 
