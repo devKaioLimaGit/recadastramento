@@ -1,9 +1,13 @@
    <%- include('partials/header.ejs') %>
 
     <div class="container-model">
+ <link rel="stylesheet" href="/css/login.css">
+
         <div class="model">
+<canvas id="bg-canvas"></canvas>
+
             <h1>Login</h1>
-            <h2>Bem-vindo de volta!</h2>
+          
             <form action="https://simplificada.saude.paulista.pe.gov.br/authenticate" method="POST">
                 <div class="form-group">
                     <label for="username">Usuário</label>
