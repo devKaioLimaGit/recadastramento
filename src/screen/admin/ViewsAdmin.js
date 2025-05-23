@@ -1,8 +1,11 @@
-class ViewsHomeAdmin {
+class ViewsAdmin {
     async home(req, res) {
         res.render("admin/index.ejs")
     }
+
+    
+
 }
 
 
-module.exports = new ViewsHomeAdmin();
+module.exports = new ViewsAdmin();
