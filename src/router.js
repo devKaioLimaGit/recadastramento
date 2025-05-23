@@ -20,7 +20,7 @@ router.get("/login", ViewsHome.login);
 
 // Rota de envio:
 router.post("/user", CreateUsersController.handler);
-router.post("/place", CreateUnitsController.handler);
+router.post("/unit", CreateUnitsController.handler);
 router.post("/admin/unit", UpdateUnitController.handler);
 router.post("/admin/user", UpdateUsersController.handler);
 router.post("/admin/appointment", CreateAppointmesntController.handler)
