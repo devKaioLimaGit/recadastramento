@@ -32,7 +32,7 @@ class CreateUsersService {
         const emailAlreadyExists = await Users.findOne({ where: { email: email } });
         const cpfAlreadyExists = await Users.findOne({ where: { cpf: cpf } });
         if (emailAlreadyExists || cpfAlreadyExists) {
-            throw new Error("Usuário já cadastado!");
+            throw new Error("Usuário já cadastrado!");
         };
 
         const userService = await Users.create({
