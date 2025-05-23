@@ -1,0 +1,83 @@
+.container-model {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.model {
+    width: 100%;
+    max-width: 420px;
+    background-color: #fff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.model h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #1C4C7D;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.model label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.model input[type="text"],
+.model input[type="password"] {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.model input:focus {
+    border-color: #1C4C7D;
+    box-shadow: 0 0 0 2px rgba(28, 76, 125, 0.2);
+    outline: none;
+}
+
+.form-actions {
+    text-align: center;
+}
+
+.model .btn {
+    background-color: #1C4C7D;
+    color: #fff;
+    padding: 0.8rem 2.2rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.model .btn:hover {
+    background-color: #163a5d;
+    transform: scale(1.03);
+}
