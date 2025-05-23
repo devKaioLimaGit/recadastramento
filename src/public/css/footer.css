@@ -1,0 +1,19 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-footer {
+    background-color: #1C4C7D; /* Azul institucional */
+    color: rgb(0, 0, 0);
+    padding: 2rem 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-footer .titulo-footer {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

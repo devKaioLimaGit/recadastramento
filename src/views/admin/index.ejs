@@ -1,11 +1,12 @@
 <%- include('../partials/header.ejs') %>
-<header>
-    <h1>Formulario de Cadastro</h1>
-</header>
+
+ <link rel="stylesheet" href="/css/admin.css">
     <div class="container">
         <form method="post" onsubmit=" return validarFormulario()"
             action="https://simplificada.saude.paulista.pe.gov.br/send" enctype="multipart/form-data">
-         
+          <div class="animated-bg"></div>
+
+  <!-- Formulário -->
             <div class="form-group">
                 <label for="name">Nome Completo do Cadidato:</label>
                 <input type="text" id="name" name="name" placeholder="Digite seu nome completo..." required required
@@ -23,6 +24,7 @@
                 <label for="birth">Data de Nascimento:</label>
                 <input type="date" id="birth" name="birth" required />
             </div>
+
 
           <!----  <div class="form-group">
                 <label for="ageinyears">Idade do candidato no dia da inscrição:</label>
@@ -311,5 +313,6 @@
     <div style="text-align: right;">
         <img src="/images/seguro.png" width="150px" alt="">
     </div>
+ 
 
     <%- include('../partials/footer.ejs') %>
