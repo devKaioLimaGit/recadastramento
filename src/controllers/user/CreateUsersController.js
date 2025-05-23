@@ -1,4 +1,4 @@
-const CreateUsersServices = require("../../services/user/CreateUsersServices");
+const CreateUsersService = require("../../services/user/CreateUsersService");
 class CreateUsersControllers {
     async handler(req, res) {
         try {
@@ -30,9 +30,9 @@ class CreateUsersControllers {
                 term,
             } = req.body;
 
-            const createUsersServices = new CreateUsersServices();
+            const CreateUsersService = new CreateUsersService();
 
-            const userService = await createUsersServices.execute({
+            const userService = await CreateUsersService.execute({
                 name,
                 registration,
                 cpf,

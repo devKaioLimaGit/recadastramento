@@ -1,6 +1,6 @@
 const Units = require("../../database/model/Units");
 
-class CreateUnitsServices {
+class CreateUnitsService {
     async execute({ unit, address, capacity }) {
         const unitAlreadyExists = await Units.findOne({ where: { unit } });
 
@@ -18,4 +18,4 @@ class CreateUnitsServices {
     }
 }
 
-module.exports = CreateUnitsServices;
+module.exports = CreateUnitsService;

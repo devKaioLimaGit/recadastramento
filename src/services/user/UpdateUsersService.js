@@ -1,7 +1,7 @@
-const { where } = require("sequelize");
+
 const Users = require("../../database/model/Users");
 
-class UpdateUsersServices {
+class UpdateUsersService {
     async execute({
         name,
         registration,
@@ -68,4 +68,4 @@ class UpdateUsersServices {
     }
 }
 
-module.exports = CreateUsersServices;
+module.exports = UpdateUsersService;

@@ -1,4 +1,4 @@
-const UpdateUsersServices = require("../../services/user/UpdateUsersService");
+const UpdateUsersService = require("../../services/user/UpdateUsersService");
 class CreateUsersControllers {
     async handler(req, res) {
         try {
@@ -32,9 +32,9 @@ class CreateUsersControllers {
 
             const id = req.query.id;
 
-            const createUsersServices = new CreateUsersServices();
+            const updateUsersService = new UpdateUsersService();
 
-            const userService = await createUsersServices.execute({
+            const userService = await updateUsersService.execute({
                 name,
                 registration,
                 cpf,

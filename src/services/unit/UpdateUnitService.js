@@ -1,6 +1,6 @@
 const Units = require("../../database/model/Units");
 
-class UpdateUnitsServices {
+class UpdateUnitsService {
     async execute({ id, unit, address, capacity }) {
         try {
             const unitService = await Units.update(
@@ -16,4 +16,4 @@ class UpdateUnitsServices {
     }
 }
 
-module.exports = UpdateUnitsServices;
+module.exports = UpdateUnitsService;

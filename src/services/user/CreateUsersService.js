@@ -1,6 +1,6 @@
 const Users = require("../../database/model/Users");
 
-class CreateUsersServices {
+class CreateUsersService {
     async execute({
         name,
         registration,
@@ -67,4 +67,4 @@ class CreateUsersServices {
     }
 }
 
-module.exports =  CreateUsersServices;
+module.exports =  CreateUsersService;

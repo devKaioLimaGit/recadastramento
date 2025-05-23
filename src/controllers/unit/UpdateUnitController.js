@@ -1,4 +1,4 @@
-const UpdateUnitsServices = require("../../services/unit/UpdateUnitService");
+const UpdateUnitsService= require("../../services/unit/UpdateUnitService");
 
 class UpdateUnitController {
     async handler(req, res) {
@@ -7,8 +7,8 @@ class UpdateUnitController {
             const id = req.query.id;
 
             console.log(id)
-            const updateUnitsServices = new UpdateUnitsServices();
-            const unitService = await updateUnitsServices.execute({ id, unit, address, capacity });
+            const updateUnitsService = new UpdateUnitsService();
+            const unitService = await UpdateUnitsService.execute({ id, unit, address, capacity });
 
             res.status(200).json({message: unitService})
         } catch (error) {
