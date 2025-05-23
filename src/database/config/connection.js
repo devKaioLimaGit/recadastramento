@@ -3,11 +3,10 @@ const Sequelize = require("sequelize");
 const connection = new Sequelize("postgresql://recadastramento_owner:npg_Om2UTohcCe6b@ep-calm-shadow-a5sksf8c-pooler.us-east-2.aws.neon.tech/recadastramento?sslmode=require", {
     host: "localhost",
     dialect: "postgresql",
-    timezone: "-03:00", // Recife (UTC-3)
+    timezone: "-03:00",
     dialectOptions: {
-        dateStrings: true, // força as datas como strings
+        dateStrings: true,
         typeCast: function (field, next) {
-            // Corrige o tipo de campo DATETIME para retornar como string
             if (field.type === "DATETIME") {
                 return field.string();
             }
@@ -15,7 +14,7 @@ const connection = new Sequelize("postgresql://recadastramento_owner:npg_Om2UToh
         }
     },
     define: {
-        timestamps: true // ativa createdAt e updatedAt
+        timestamps: true
     },
     logging: false
 });

@@ -42,6 +42,7 @@ Users.hasOne(Appointments, {
   foreignKey: "userid",
   onDelete: "CASCADE",
 });
+
 Appointments.belongsTo(Users, {
   foreignKey: "userid",
 });
@@ -56,7 +57,7 @@ Appointments.belongsTo(Units, {
 });
 
 
-Appointments.sync({ force: true });
+Appointments.sync({ force: false });
 
 module.exports = Appointments
 

@@ -140,6 +140,6 @@ const Users = connection.define("users", {
     timestamps: true,
 });
 
-Users.sync({ force: true });
+Users.sync({ force: false });
 
 module.exports = Users;

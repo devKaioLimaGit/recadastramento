@@ -31,7 +31,7 @@ const Units = connection.define("units", {
     timestamps: true,
 });
 
-Units.sync({ force: true });
+Units.sync({ force: false });
 
 
 module.exports = Units;
