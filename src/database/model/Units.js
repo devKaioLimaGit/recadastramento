@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const connection = require("../config/connection");
 
-const Places = connection.define("units", {
+const Units = connection.define("units", {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -31,4 +31,7 @@ const Places = connection.define("units", {
     timestamps: true,
 });
 
-module.exports = Places;
+Units.sync({ force: true });
+
+
+module.exports = Units;

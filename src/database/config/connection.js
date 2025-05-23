@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
 
-const connection = new Sequelize("recadastramento", "root", "12345678", {
+const connection = new Sequelize("postgresql://recadastramento_owner:npg_Om2UTohcCe6b@ep-calm-shadow-a5sksf8c-pooler.us-east-2.aws.neon.tech/recadastramento?sslmode=require", {
     host: "localhost",
-    dialect: "mysql",
+    dialect: "postgresql",
     timezone: "-03:00", // Recife (UTC-3)
     dialectOptions: {
         dateStrings: true, // força as datas como strings

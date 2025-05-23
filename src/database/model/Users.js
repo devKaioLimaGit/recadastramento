@@ -14,6 +14,11 @@ const Users = connection.define("users", {
         allowNull: false,
     },
 
+    registration: {
+        type: DataTypes.STRING(191),
+        allowNull: false,
+    },
+
     cpf: {
         type: DataTypes.STRING(191),
         allowNull: false,
@@ -124,16 +129,17 @@ const Users = connection.define("users", {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
-
+    
     term: {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
 
-
 }, {
-    tableName: "users", 
+    tableName: "users",
     timestamps: true,
 });
+
+Users.sync({ force: true });
 
 module.exports = Users;
