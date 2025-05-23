@@ -4,8 +4,10 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const router = require("./router");
 const cors = require("cors");
-// // const db = require("./database/config/connection");
-// const {createTables} = require("./database/model/RelationDB")
+const  connection = require("./database/config/connection");
+const Users = require("./database/model/Users");
+const Units = require("./database/model/Units");
+const Appointments = require("./database/model/Appointments");
 dotenv.config();
 
 const app = express();
