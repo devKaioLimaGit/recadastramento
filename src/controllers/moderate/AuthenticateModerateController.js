@@ -13,11 +13,10 @@ class AuthenticateModerateController {
 
             if (req.session.user) {
                 console.log("Sessão de usuário encontrada.");
-                console.log(req.session)
             } else {
                 console.log("Sessão de usuário não encontrada.");
             }
-            
+
             if (req.session.user.role === 'admin') {
                 res.redirect("/admin");
             } else if (req.session.user.role === 'lowuser') {
