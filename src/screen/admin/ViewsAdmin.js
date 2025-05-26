@@ -3,6 +3,10 @@ class ViewsAdmin {
         res.render("admin/index.ejs")
     }
 
+    async appointment(req,res){
+        res.render("admin/formsCreateAppointments.ejs")
+    }
+
     
 
 }

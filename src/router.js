@@ -9,26 +9,37 @@ const UpdateUsersController = require("./controllers/user/UpdateUsersController"
 const CreateAppointmesntController = require("./controllers/appointments/CreateAppointmesntController");
 const CreateAdminController = require("./controllers/moderate/CreateModerateController");
 const AuthenticateModerateController = require("./controllers/moderate/AuthenticateModerateController");
-const {authenticateADM,authenticateAdminOrLowuser,authenticateLowuser} = require("./middlewares/adminAuth")
+const { authenticateADM, authenticateAdminOrLowuser, authenticateLowuser } = require("./middlewares/adminAuth")
 const router = Router();
 
 
-// Rota de talas
 router.get("/", ViewsHome.home);
+router.post("/authenticate", AuthenticateModerateController.handler);
 router.get("/login", ViewsHome.login);
-router.get("/admin", ViewsAdmin.home);
-router.get("/lowuser", ViewsLowuser.home);
-
-// Rota de envio:
 
 //Agendamento Usuário:
 router.post("/user", CreateUsersController.handler);
 
+
+// Rotas ADM:
+router.get("/admin", authenticateADM, ViewsAdmin.home);
+router.get("/admin/appointment", authenticateADM, ViewsAdmin.appointment);
+
+
+
+
+
+// Rotas Lowuser:
+router.get("/lowuser", authenticateLowuser, ViewsLowuser.home);
+router.get("/lowuser/forms", authenticateLowuser, ViewsLowuser.form);
+
+//Rota de envio:
+
+
+
 //Cria outros usúarios autenticados para o sistema:
 router.post("/admin/moderator", authenticateADM, CreateAdminController.handler);
 
-// Rota de autenticação do usuário:
-router.post("/authenticate", AuthenticateModerateController.handler);
 
 // Rota de criação da unidade:
 router.post("/admin/unit/create", authenticateADM, CreateUnitsController.handler);

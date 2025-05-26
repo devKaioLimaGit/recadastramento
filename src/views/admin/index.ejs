@@ -1,4 +1,54 @@
 <%- include('../partials/header.ejs') %>
 
+    <div class="container-table">
+        <div class="table-container">
+            <table id="candidatesTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Matricula</th>
+                        <th>Cargo</th>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>E-Mail</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Cidade</th>
+                        <th>Deficiência</th>
+                        <th>Anexo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<%- include('../partials/footer.ejs') %>
+    <script>
+        $(document).ready(function () {
+            $('#candidatesTable').DataTable({
+                "language": {
+                    "sProcessing": "Processando...",
+                    "sLengthMenu": "Mostrar _MENU_ registros",
+                    "sZeroRecords": "Nenhum registro encontrado",
+                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                    "sInfoFiltered": "(filtrado de _MAX_ registros totais)",
+                    "sSearch": "Pesquisar:",
+                    "oPaginate": {
+                        "sFirst": "Primeiro",
+                        "sPrevious": "Anterior",
+                        "sNext": "Próximo",
+                        "sLast": "Último"
+                    }
+                },
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "order": [[0, 'asc']],
+            });
+        });
+    </script>
+
+
+    <%- include('../partials/footer.ejs') %>

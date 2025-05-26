@@ -1,8 +1,8 @@
 function authenticateADM(req, res, next) {
-    if (req.session.user && req.session.user.roles != undefined) {
-        if (req.session.user.roles === "lowuser") {
+    if (req.session.user && req.session.user.role != undefined) {
+        if (req.session.user.role === "lowuser") {
             return res.redirect("/login");
-        } else if (req.session.user.roles === "admin") {
+        } else if (req.session.user.role === "admin") {
             next();
         } else {
             return res.redirect("/login");
@@ -14,10 +14,10 @@ function authenticateADM(req, res, next) {
 
 
 function authenticateLowuser(req, res, next) {
-    if (req.session.user && req.session.user.roles != undefined) {
-        if (req.session.user.roles === "lowuser") {
+    if (req.session.user && req.session.user.role != undefined) {
+        if (req.session.user.role === "lowuser") {
             next();
-        } else if (req.session.user.roles === "admin") {
+        } else if (req.session.user.role === "admin") {
             return res.redirect("/login");
         } else {
             return res.redirect("/login");
@@ -28,8 +28,8 @@ function authenticateLowuser(req, res, next) {
 }
 
 function authenticateAdminOrLowuser(req, res, next) {
-    if (req.session.user && req.session.user.roles != undefined) {
-        if (req.session.user.roles === "lowuser" || req.session.user.roles === "admin") {
+    if (req.session.user && req.session.user.role != undefined) {
+        if (req.session.user.role === "lowuser" || req.session.user.role === "admin") {
             next();
         } else {
             return res.redirect("/login");
