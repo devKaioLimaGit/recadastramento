@@ -10,8 +10,21 @@ class AuthenticateModerateController {
             const user = await authenticateModerateService.execute({ email, password });
 
             req.session.user = user;
+
+            if (req.session.user) {
+                console.log("Sessão de usuário encontrada.");
+                console.log(req.session)
+            } else {
+                console.log("Sessão de usuário não encontrada.");
+            }
             
-            res.status(200).json(user)
+            if (req.session.user.role === 'admin') {
+                res.redirect("/admin");
+            } else if (req.session.user.role === 'lowuser') {
+                res.redirect("/lowuser");
+            } else {
+                return res.status(403).send("Função de usuário inválida");
+            }
 
         } catch (error) {
             console.error("Erro na autenticação:", error.message);

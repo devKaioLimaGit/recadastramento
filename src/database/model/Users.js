@@ -125,10 +125,10 @@ const Users = connection.define("users", {
         allowNull: false,
     },
 
-    photo: {
-        type: DataTypes.STRING(191),
-        allowNull: false,
-    },
+    // photo: {
+    //     type: DataTypes.STRING(191),
+    //     allowNull: false,
+    // },
         
     term: {
         type: DataTypes.STRING(191),
