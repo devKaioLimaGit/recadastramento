@@ -129,7 +129,7 @@ const Users = connection.define("users", {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
-    
+        
     term: {
         type: DataTypes.STRING(191),
         allowNull: false,
