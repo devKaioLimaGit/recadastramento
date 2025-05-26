@@ -1,14 +1,17 @@
+
+/* Rodapé estilizado */
 .custom-footer {
-    background: linear-gradient(90deg, #1C4C7D 0%, #225e9e 100%);
+ background: linear-gradient(90deg, #1C4C7D 0%, #225e9e 100%);
     color: #ffffff;
-    padding: 3rem 0;
-    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    padding: 1rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    border-top: 4px solid #2630b930;
+    position: relative;
+        border-top: 4px solid #2630b930;
 }
 
-.custom-footer .titulo-footer {
+.titulo-footer {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 1rem;
