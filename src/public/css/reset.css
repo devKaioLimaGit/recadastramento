@@ -2,6 +2,10 @@ body {
   background: linear-gradient(-45deg, #004985, #005acf, #456fc2, #4c6ecb);
   background-size: 400% 400%;
   animation: gradientAnimation 10s ease infinite;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
 }
 
 @keyframes gradientAnimation {

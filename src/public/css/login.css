@@ -2,19 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    height: calc(100vh - 120px);
+    padding: 2rem;
+    max-height: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
 }
 
-.model {
-    width: 100%;
-    max-width: 420px;
-    background-color: #fff;
-    padding: 2.5rem;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    animation: fadeInUp 0.8s ease;
-}
-
+/* Animação de entrada */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -28,13 +23,13 @@
 
 .model h1 {
     text-align: center;
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: #1C4C7D;
     margin-bottom: 2rem;
     font-weight: 700;
-    text-transform: uppercase;
 }
 
+/* Espaçamento entre os campos */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -46,16 +41,18 @@
     color: #333;
 }
 
+/* Corrigido o tamanho da fonte e vírgula incorreta */
 .model input[type="text"],
 .model input[type="password"] {
     width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+    border: 1px solid #1C4C7D;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
+/* Foco nos campos */
 .model input:focus {
     border-color: #1C4C7D;
     box-shadow: 0 0 0 2px rgba(28, 76, 125, 0.2);
@@ -64,8 +61,10 @@
 
 .form-actions {
     text-align: center;
+    margin-top: 1rem;
 }
 
+/* Botão */
 .model .btn {
     background-color: #1C4C7D;
     color: #fff;
