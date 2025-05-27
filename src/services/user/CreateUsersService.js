@@ -1,11 +1,12 @@
 const Users = require("../../database/model/Users");
-
+const Appointments = require("../../database/model/Appointments");
 class CreateUsersService {
     async execute({
         name,
-        registration,
+        socialname,
         cpf,
         birth,
+        registration,
         gender,
         rg,
         organ,
@@ -13,9 +14,11 @@ class CreateUsersService {
         civilstatus,
         education,
         mother,
+        father,
         nationality,
         cityofbirth,
         birthplacestate,
+        raceandcolor,
         email,
         tel,
         zip,
@@ -25,7 +28,7 @@ class CreateUsersService {
         neighborhood,
         city,
         deficiency,
-        photo,
+        availabletime,
         term
     }) {
 
@@ -35,11 +38,14 @@ class CreateUsersService {
             throw new Error("Usuário já cadastrado!");
         };
 
+
+
         const userService = await Users.create({
             name,
-            registration,
+            socialname,
             cpf,
             birth,
+            registration,
             gender,
             rg,
             organ,
@@ -47,9 +53,11 @@ class CreateUsersService {
             civilstatus,
             education,
             mother,
+            father,
             nationality,
             cityofbirth,
             birthplacestate,
+            raceandcolor,
             email,
             tel,
             zip,
@@ -59,12 +67,17 @@ class CreateUsersService {
             neighborhood,
             city,
             deficiency,
-            photo,
             term
         });
+
+
+        const appointments = await Appointments.update(
+            { userid: userService.id },
+            { where: { id: availabletime } }
+        );
 
         return userService;
     }
 }
 
-module.exports =  CreateUsersService;
+module.exports = CreateUsersService;

@@ -1,8 +1,7 @@
 <%- include('partials/header.ejs') %>
 
     <div class="container">
-        <form method="post" onsubmit=" return validarFormulario()"
-            action="https://simplificada.saude.paulista.pe.gov.br/send" enctype="multipart/form-data">
+        <form method="post" action="/user">
             <div class="form-group">
                 <label for="name">Nome Completo:</label>
                 <input type="text" id="name" name="name" placeholder="Digite seu nome completo..." required required
@@ -28,14 +27,18 @@
                 <input type="date" id="birth" name="birth" required />
             </div>
 
+
+            <div class="form-group">
+                <label for="birth">Matrícula:</label>
+                <input type="text" id="birth" name="registration" required />
+            </div>
+
             <div class="form-group">
                 <label for="gender">Sexo:</label>
                 <select id="gender" name="gender" required>
                     <option value="" disabled selected>Selecione seu sexo</option>
                     <option value="MASCULINO">MASCULINO</option>
                     <option value="FEMININO">FEMININO</option>
-                    <option value="TRANSMASCULINO">TRANSMASCULINO</option>
-                    <option value="TRANSFEMININO">TRANSFEMININO</option>
                     <!-- <option value="NÃO_BINÁRIO">NÃO-BINÁRIO</option> -->
                     <!-- <option value="OUTRO">OUTRO</option> -->
                 </select>
@@ -85,13 +88,6 @@
                     <option value="SE">SE</option>
                     <option value="TO">TO</option>
                 </select>
-            </div>
-
-
-            <div class="form-group">
-                <label for="title">Título de Eleitor:</label>
-                <input type="text" id="title" name="title" placeholder="Digite o título de eleitor..." required
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)" />
             </div>
 
             <div class="form-group">
@@ -259,63 +255,31 @@
             </div>
 
             <div class="form-group">
-                <label for="deficiencyContext">Se SIM, especifique a deficiência. Se Não, digite: NÃO TENHO:</label>
-                <input type="text" id="deficiencyContext" name="deficiencyContext" required pattern="[A-Za-zÀ-ÿ\s]+"
-                    title="Apenas letras e espaços são permitidos" />
-            </div>
-
-            <!--arrumar !!!!!!!!!!!!!!!!!! -->
-            <div class="form-group">
-                <label for="localservice">Onde deseja realizar seu atendimento?</label>
-                <select id="localservice" name="localservice" required>
-                    <option value="" disabled selected>Selecione o local de atendimento</option>
-                    <option value="inserir">inserir</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="typeservice">Tipo de atendimento</label>
-                <select id="typeservice" name="typeservice" required>
-                    <option value="" disabled selected>Selecione o tipo de atendimento</option>
-                    <option value="inserir">inserir</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="birth">Data desejada</label>
-                <input type="date" id="birth" name="birth" required />
-            </div>
-
-            <div class="form-group">
                 <label for="availabletime">Horários disponíveis</label>
                 <select id="availabletime" name="availabletime" required>
                     <option value="" disabled selected>Selecione um horário</option>
                     <% appointment.forEach(item=> { %>
-                        <option value="<%= item.id %>">
-                            <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
-                        </option>
-                        <% }) %>
-                </select>
-            </div>
-            <!--arrumar !!!!!!!!!!!!!!!!!! -->
+                        <% if (!item.userid) { %>
+                            <option value="<%= item.id %>">
+                                <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
+                            </option>
+                            <% } %>
+                                <% }) %>
 
-            <div class="form-group">
-                <label for="file">Arquivo único <strong>(PDF, Tamanho Máximo 10MB):</strong></label>
-                <input type="file" id="file" name="file" accept=".pdf" class="file-input" onchange="checkFileSize()" />
-                <small id="fileSizeError" style="color: red; display: none;">O arquivo deve ter no máximo 10MB.</small>
+                </select>
             </div>
 
             <div class="form-term">
                 <input type="checkbox" id="term" name="term" required />
                 <label for="term">Aceite o <a href="/terms" target="_blank">termo de privacidade</a></label>
             </div>
-
+            <!-- 
             <div class="form-group">
                 <label for="captcha">Responda a pergunta:</label>
                 <div id="captchaQuestion"></div>
                 <input type="text" id="captchaAnswer" name="captchaAnswer" placeholder="Digite o resultado" required />
                 <span id="captchaError" style="color: red; display: none;">Resposta incorreta!</span>
-            </div>
+            </div> -->
             <div class="form-actions">
                 <input class="btn" type="submit" value="Enviar" />
             </div>

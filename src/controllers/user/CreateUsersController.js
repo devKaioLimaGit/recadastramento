@@ -29,16 +29,18 @@ class CreateUsersControllers {
                 neighborhood,
                 city,
                 deficiency,
-                term,
+                availabletime,
+                term
             } = req.body;
 
             const createUsersService = new CreateUsersService();
 
             const userService = await createUsersService.execute({
                 name,
-                registration,
+                socialname,
                 cpf,
                 birth,
+                registration,
                 gender,
                 rg,
                 organ,
@@ -46,9 +48,11 @@ class CreateUsersControllers {
                 civilstatus,
                 education,
                 mother,
+                father,
                 nationality,
                 cityofbirth,
                 birthplacestate,
+                raceandcolor,
                 email,
                 tel,
                 zip,
@@ -58,8 +62,8 @@ class CreateUsersControllers {
                 neighborhood,
                 city,
                 deficiency,
-                photo,
-                term,
+                availabletime,
+                term
             });
 
             res.status(200).json(userService);
