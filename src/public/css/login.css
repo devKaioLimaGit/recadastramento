@@ -1,82 +1,167 @@
-
-
-.container-model {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 120px);
-    padding: 2rem;
-    max-height: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    background: transparent;
-    box-shadow: 30px 30px 30px rgba(233, 232, 232, 0.1), 30px 30px 60px rgba(218, 214, 214, 0.8);
+.login-container {
+  width: 100%;
+  max-width: 420px;
+  background: var(--background-glass);
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px var(--shadow-color);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  text-align: center;
+  color: var(--text-color);
+  transition: transform 0.3s ease;
+  margin: auto;
 }
 
-
-
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.login-container:hover {
+  transform: translateY(-5px);
 }
 
-.model h1 {
-    text-align: center;
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 2rem;
-    font-weight: 700;
+.login-box h2 {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 2.25rem;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 8px var(--primary-color);
 }
 
-.form-group {
-    margin-bottom: 1.5rem;
+.input-box {
+  position: relative;
+  margin-bottom: 30px;
 }
 
-.model label {
-    display: block;
-    margin-bottom: 0.4rem;
-    font-weight: 600;
-    color: #ffffff;
+.input-box input {
+  width: 100%;
+  padding: 14px 45px 14px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius);
+  background: var(--input-bg);
+  color: var(--text-color);
+  outline: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 0 8px rgba(255 255 255 / 0.2);
 }
 
-.model input[type="text"],
-.model input[type="password"] {
-    width: 100%;
-    padding: 2rem;
-    font-size: 1,5rem;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+.input-box input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 10px var(--primary-color);
 }
 
-.model input:focus {
-    border-color: #ffffff;
-    box-shadow: 0 0 0 2px rgba(28, 76, 125, 0.2);
-    outline: none;
+.input-box input::placeholder {
+  color: var(--input-placeholder);
+  font-style: italic;
 }
 
-.form-actions {
-    text-align: center;
+.input-box i {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  color: var(--text-color);
+  pointer-events: none;
+  transition: color 0.3s ease;
 }
 
-.model .btn {
-    background-color: #305477;
-    color: #ffffff;
-    padding: 0.8rem 2.2rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.input-box input:focus + i {
+  color: var(--primary-color);
 }
 
-.model .btn:hover {
-    background-color: #ffffff;
-    transform: scale(1.03);
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--input-placeholder);
+  margin-bottom: 25px;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: border-color 0.3s ease;
+}
+
+.options input[type="checkbox"]:hover {
+  border-color: var(--primary-color);
+}
+
+.options a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.options a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.btn {
+  width: 100%;
+  background-color: var(--primary-color);
+  border: none;
+  padding: 14px 0;
+  border-radius: var(--border-radius);
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 15px rgba(241, 241, 241, 0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #3369ff;
+  box-shadow: 0 8px 20px rgba(239, 235, 241, 0.7);
+}
+
+.signup {
+  margin-top: 30px;
+  font-size: 0.95rem;
+  color: var(--input-placeholder);
+}
+
+.signup a {
+  color: var(--primary-color);
+  font-weight: 700;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.signup a:hover {
+  text-decoration: underline;
+}
+:root {
+  --background-glass: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --text-color: #ffffff;
+  --primary-color: #204492;
+  --input-bg: rgba(255, 255, 255, 0.2);
+  --input-placeholder: rgba(255, 255, 255, 0.6);
+  --border-radius: 12px;
+}
+.signup a {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.signup a:hover {
+  text-decoration: none;
+  color: #fff;
 }
