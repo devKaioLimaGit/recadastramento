@@ -2,10 +2,8 @@ const { compare } = require("bcrypt");
 const Moderate = require("../../database/model/Moderate");
 
 class AuthenticateModerateService {
-    async execute({ email, password }) {
-        // Buscar o moderador pelo e-mail
-        console.log(email)
-        const moderate = await Moderate.findOne({ where: { email:email } });
+    async execute({ cpf, password }) {
+        const moderate = await Moderate.findOne({ where: { cpf: cpf } });
 
         if (!moderate) {
             throw new Error("Usuário e senhas incorretos");

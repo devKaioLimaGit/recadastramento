@@ -5,6 +5,7 @@ class CreateModerateController {
             const {
                 name,
                 email,
+                cpf,
                 password,
                 role,
             } = req.body;
@@ -14,6 +15,7 @@ class CreateModerateController {
             const moderateService = await createAdminService.execute({
                 name,
                 email,
+                cpf,
                 password,
                 role
             });

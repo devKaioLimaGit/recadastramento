@@ -8,12 +8,12 @@
                 <input type="text" id="name" name="name" placeholder="Digite seu nome completo..." required required
                     pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
             </div>
-<canvas id="bg-canvas"></canvas>
+            <canvas id="bg-canvas"></canvas>
 
             <div class="form-group">
                 <label for="name">Nome social:</label>
-                <input type="text" id="socialname" name="socialname" placeholder="Digite seu nome social..." required required
-                    pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
+                <input type="text" id="socialname" name="socialname" placeholder="Digite seu nome social..." required
+                    required pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
             </div>
 
             <div class="form-group">
@@ -27,7 +27,7 @@
                 <label for="birth">Data de Nascimento:</label>
                 <input type="date" id="birth" name="birth" required />
             </div>
-            
+
             <div class="form-group">
                 <label for="gender">Sexo:</label>
                 <select id="gender" name="gender" required>
@@ -93,7 +93,7 @@
                 <input type="text" id="title" name="title" placeholder="Digite o título de eleitor..." required
                     oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 12)" />
             </div>
-        
+
             <div class="form-group">
                 <label for="civilstatus">Estado Civil:</label>
                 <select id="civilstatus" name="civilstatus" required>
@@ -127,7 +127,7 @@
                     pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
             </div>
 
-             <div class="form-group">
+            <div class="form-group">
                 <label for="mother">Nome completo do pai:</label>
                 <input type="text" id="father" name="father" placeholder="Digite o nome do seu pai..." required
                     pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
@@ -264,7 +264,7 @@
                     title="Apenas letras e espaços são permitidos" />
             </div>
 
-<!--arrumar !!!!!!!!!!!!!!!!!! -->
+            <!--arrumar !!!!!!!!!!!!!!!!!! -->
             <div class="form-group">
                 <label for="localservice">Onde deseja realizar seu atendimento?</label>
                 <select id="localservice" name="localservice" required>
@@ -289,11 +289,15 @@
             <div class="form-group">
                 <label for="availabletime">Horários disponíveis</label>
                 <select id="availabletime" name="availabletime" required>
-                    <option value="" disabled selected>Selecione um hórario</option>
-                    <option value="inserir">inserir</option>
+                    <option value="" disabled selected>Selecione um horário</option>
+                    <% appointment.forEach(item=> { %>
+                        <option value="<%= item.id %>">
+                            <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
+                        </option>
+                        <% }) %>
                 </select>
             </div>
-<!--arrumar !!!!!!!!!!!!!!!!!! -->
+            <!--arrumar !!!!!!!!!!!!!!!!!! -->
 
             <div class="form-group">
                 <label for="file">Arquivo único <strong>(PDF, Tamanho Máximo 10MB):</strong></label>
