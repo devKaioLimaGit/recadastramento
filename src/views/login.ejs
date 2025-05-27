@@ -1,30 +1,30 @@
-   <%- include('partials/header.ejs') %>
-
-    <div class="container-model">
- <link rel="stylesheet" href="/css/login.css">
-
-        <div class="model">
+<%- include('partials/header.ejs') %>
 <canvas id="bg-canvas"></canvas>
 
-            <h1>Login</h1>
-          
-            <form action="/authenticate" method="POST">
-                <div class="form-group">
-                    
-                    <input type="text" id="username" name="cpf" placeholder="Digite seu CPF" required>
-                </div>
+<div class="login-container">
+  <link rel="stylesheet" href="/css/login.css">
 
-                <div class="form-group">
-                    <input type="password" id="password" name="password" placeholder="Password" required>
-                </div>
-                
-                <!-- <input type="hidden" name="recaptchaToken" id="recaptchaToken"> -->
+  <div class="login-box">
+    <h2>Login</h2>
+    <form action="/authenticate" method="POST">
+      <div class="input-box">
+        <input type="text" name="cpf"  placeholder="Email">
+      </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn">Entrar</button>
-                </div>
-            </form>
-        </div>
-    </div>
+      <div class="input-box">
+        <input type="password" name="password"placeholder="Senha" required>
+      </div>
+
+      <div class="forgot">
+      </div>
+
+      <button type="submit" class="btn">Entrar</button>
+
+      <div class="signup">
+        Não tem uma conta? <a href="#">Cadastre-se</a>
+      </div>
+    </form>
+  </div>
+</div>
 
 <%- include('partials/footer.ejs') %>
