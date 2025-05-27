@@ -1,0 +1,117 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #4A71C6;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+}
+
+/* Container principal */
+.container-table {
+    max-width: 95%;
+    margin: 40px auto;
+    padding: 30px;
+    background: #365fa0;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabela elegante */
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+#candidatesTable {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 15px;
+    color: #333;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+#candidatesTable thead {
+    background-color: #1C4C7D;
+    color: #ffffff;
+}
+
+#candidatesTable th {
+    padding: 16px 18px;
+    text-align: left;
+    font-weight: 600;
+}
+
+#candidatesTable td {
+    padding: 14px 18px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#candidatesTable tbody tr {
+    transition: background 0.3s ease;
+}
+
+#candidatesTable tbody tr:hover {
+    background-color: #f3f6fd;
+}
+
+/* DataTables elementos */
+.dataTables_wrapper {
+    color: #fff;
+}
+
+.dataTables_length,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate {
+    margin: 15px 0;
+    color: #fff;
+}
+
+/* Inputs e selects */
+.dataTables_filter input,
+.dataTables_length select {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    margin-left: 5px;
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+/* Botões de paginação */
+.dataTables_paginate .paginate_button {
+    padding: 6px 14px;
+    margin: 2px;
+    border-radius: 6px;
+    background-color: #1c4c7d;
+    color: #fff !important;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.dataTables_paginate .paginate_button:hover {
+    background-color: #155086;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+    #candidatesTable th,
+    #candidatesTable td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+
+    .container-table {
+        padding: 15px;
+    }
+}

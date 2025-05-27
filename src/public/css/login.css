@@ -1,3 +1,5 @@
+
+
 .container-model {
     display: flex;
     justify-content: center;
@@ -7,9 +9,13 @@
     max-height: 100%;
     max-width: 100%;
     box-sizing: border-box;
+    background: transparent;
+    box-shadow: 30px 30px 30px rgba(233, 232, 232, 0.1), 30px 30px 60px rgba(218, 214, 214, 0.8);
 }
 
-/* Animação de entrada */
+
+
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -24,12 +30,11 @@
 .model h1 {
     text-align: center;
     font-size: 2rem;
-    color: #1C4C7D;
+    color: #ffffff;
     margin-bottom: 2rem;
     font-weight: 700;
 }
 
-/* Espaçamento entre os campos */
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -38,36 +43,31 @@
     display: block;
     margin-bottom: 0.4rem;
     font-weight: 600;
-    color: #333;
+    color: #ffffff;
 }
 
-/* Corrigido o tamanho da fonte e vírgula incorreta */
 .model input[type="text"],
 .model input[type="password"] {
     width: 100%;
-    padding: 1rem 1.2rem;
-    font-size: 1.1rem;
-    border: 1px solid #1C4C7D;
+    padding: 2rem;
+    font-size: 1,5rem;
     border-radius: 8px;
     transition: all 0.3s ease;
 }
 
-/* Foco nos campos */
 .model input:focus {
-    border-color: #1C4C7D;
+    border-color: #ffffff;
     box-shadow: 0 0 0 2px rgba(28, 76, 125, 0.2);
     outline: none;
 }
 
 .form-actions {
     text-align: center;
-    margin-top: 1rem;
 }
 
-/* Botão */
 .model .btn {
-    background-color: #1C4C7D;
-    color: #fff;
+    background-color: #305477;
+    color: #ffffff;
     padding: 0.8rem 2.2rem;
     font-size: 1rem;
     border: none;
@@ -77,6 +77,6 @@
 }
 
 .model .btn:hover {
-    background-color: #163a5d;
+    background-color: #ffffff;
     transform: scale(1.03);
 }
