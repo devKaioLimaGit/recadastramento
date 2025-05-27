@@ -1,13 +1,20 @@
 const AuthenticateModerateService = require("../../services/moderate/AuthenticateModerateService");
 
+
+function limparCPF(cpf) {
+  return cpf.replace(/[^\d]/g, '');
+}
+
 class AuthenticateModerateController {
     async handler(req, res) {
         try {
-            const { email, password } = req.body;
+            const { cpf, password } = req.body;
+
+            console.log(cpf)
 
             const authenticateModerateService = new AuthenticateModerateService();
 
-            const user = await authenticateModerateService.execute({ email, password });
+            const user = await authenticateModerateService.execute({ cpf:limparCPF(cpf), password });
 
             req.session.user = user;
 

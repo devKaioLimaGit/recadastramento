@@ -2,8 +2,8 @@ const Moderate = require("../../database/model/Moderate");
 const { hash } = require("bcrypt");
 
 class CreateAdminService {
-    async execute({ name, email, password, role }) {
-        const adminAlreadyExists = await Moderate.findOne({ where: { email } });
+    async execute({ name, email, cpf, password, role }) {
+        const adminAlreadyExists = await Moderate.findOne({ where: { cpf:cpf } });
 
         if (adminAlreadyExists) {
             throw new Error("Moderador já cadastrado!");
@@ -14,6 +14,7 @@ class CreateAdminService {
         const moderateService = await Moderate.create({
             name,
             email,
+            cpf,
             password: passwordHash,
             role
         });

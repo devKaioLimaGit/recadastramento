@@ -21,38 +21,23 @@ router.get("/login", ViewsHome.login);
 router.post("/user", CreateUsersController.handler);
 
 
-// Rotas ADM:
+// Rotas ADM Telas:
 router.get("/admin", authenticateADM, ViewsAdmin.home);
 router.get("/admin/appointment", authenticateADM, ViewsAdmin.appointment);
 
+//Rota de envio:
+router.post("/admin/moderator", authenticateADM, CreateAdminController.handler);
+router.post("/admin/unit", CreateUnitsController.handler);
+router.post("/admin/unit/:id", authenticateADM, UpdateUnitController.handler);
+router.post("/admin/appointment", CreateAppointmesntController.handler);
 
 
-
-
-// Rotas Lowuser:
+// Rotas Lowuser Telas:
 router.get("/lowuser", authenticateLowuser, ViewsLowuser.home);
 router.get("/lowuser/forms", authenticateLowuser, ViewsLowuser.form);
 
 //Rota de envio:
-
-
-
-//Cria outros usúarios autenticados para o sistema:
-router.post("/admin/moderator", authenticateADM, CreateAdminController.handler);
-
-
-// Rota de criação da unidade:
-router.post("/admin/unit/create", authenticateADM, CreateUnitsController.handler);
-
-//Rota da atualização da unidade:
-router.post("/admin/unit", authenticateADM, UpdateUnitController.handler);
-
-//Rota do usuário comum logado:
-router.post("/user/home", authenticateLowuser, UpdateUsersController.handler);
-
-
-//Cria Agendamento
-router.post("/admin/appointment", authenticateADM, CreateAppointmesntController.handler);
+router.post("/lowuser/user/:id", authenticateLowuser, UpdateUsersController.handler);
 
 
 module.exports = router;

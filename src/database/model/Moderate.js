@@ -23,6 +23,12 @@ const Moderate = connection.define("moderators", {
         }
     },
 
+    cpf: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+
+
     password: {
         type: DataTypes.STRING,
         allowNull: false,
