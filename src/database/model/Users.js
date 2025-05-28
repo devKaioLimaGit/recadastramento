@@ -14,6 +14,17 @@ const Users = connection.define("users", {
         allowNull: false,
     },
 
+
+    socialname: {
+        type: DataTypes.STRING(191),
+        allowNull: false,
+    },
+
+    father: {
+        type: DataTypes.STRING(191),
+        allowNull: false,
+    },
+
     registration: {
         type: DataTypes.STRING(191),
         allowNull: false,
@@ -43,7 +54,10 @@ const Users = connection.define("users", {
         type: DataTypes.STRING(191),
         allowNull: false,
     },
-
+    raceandcolor: {
+        type: DataTypes.STRING(191),
+        allowNull: false,
+    },
     uf: {
         type: DataTypes.STRING(191),
         allowNull: false,
@@ -125,11 +139,6 @@ const Users = connection.define("users", {
         allowNull: false,
     },
 
-    // photo: {
-    //     type: DataTypes.STRING(191),
-    //     allowNull: false,
-    // },
-        
     term: {
         type: DataTypes.STRING(191),
         allowNull: false,
