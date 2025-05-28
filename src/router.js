@@ -26,7 +26,7 @@ router.get("/admin", authenticateADM, ViewsAdmin.home);
 router.get("/admin/appointment", authenticateADM, ViewsAdmin.appointment);
 
 //Rota de envio:
-router.post("/admin/moderator", authenticateADM, CreateAdminController.handler);
+router.post("/admin/moderator", CreateAdminController.handler);
 router.post("/admin/unit", CreateUnitsController.handler);
 router.post("/admin/unit/:id", authenticateADM, UpdateUnitController.handler);
 router.post("/admin/appointment", CreateAppointmesntController.handler);
