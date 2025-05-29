@@ -5,6 +5,7 @@ const ViewsLowuser = require("./screen/lowuser/ViewsLowuser")
 const CreateUsersController = require("./controllers/user/CreateUsersController");
 const CreateUnitsController = require("./controllers/unit/CreateUnitController");
 const UpdateUnitController = require("./controllers/unit/UpdateUnitController");
+    
 const UpdateUsersController = require("./controllers/user/UpdateUsersController");
 const CreateAppointmesntController = require("./controllers/appointments/CreateAppointmesntController");
 const CreateAdminController = require("./controllers/moderate/CreateModerateController");
@@ -16,6 +17,7 @@ const router = Router();
 router.get("/", ViewsHome.home);
 router.post("/authenticate", AuthenticateModerateController.handler);
 router.get("/login", ViewsHome.login);
+router.get("/admin/unit", authenticateADM,ViewsAdmin.unit);
 
 //Agendamento Usuário:
 router.post("/user", CreateUsersController.handler);

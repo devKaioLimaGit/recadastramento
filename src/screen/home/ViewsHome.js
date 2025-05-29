@@ -1,6 +1,7 @@
 const Appointments = require("../../database/model/Appointments");
 const Units = require("../../database/model/Units");
 
+
 class ViewsHome {
     async home(req, res) {
         const appointment = await Appointments.findAll({
@@ -18,7 +19,10 @@ class ViewsHome {
     async login(req, res) {
         res.render("login.ejs")
     }
-}
 
+    async successo(req, res) {
+        res.render("successo.ejs")
+    }
+}
 
 module.exports = new ViewsHome();   
