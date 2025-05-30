@@ -7,7 +7,7 @@ class ViewsAdmin {
         res.render("admin/formsCreateAppointments.ejs")
     }
     async unit(req, res) {
-        res.render("admin/formsCreateUnit.ejs")
+        res.render("admin/unit.ejs")
     }
     
 
