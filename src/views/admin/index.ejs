@@ -1,63 +1,93 @@
 <%- include('../partials/header.ejs') %>
-<link rel="stylesheet" href="/css/tabela.css">
-<canvas id="bg-canvas"></canvas>
-<div class="container-table">
-    <h2>Recadastramento de Servidores</h2>
+    <link rel="stylesheet" href="/css/tabela.css">
+    <canvas id="bg-canvas"></canvas>
+    <div class="container-table">
+        <h2>Recadastramento de Servidores</h2>
 
-    <div class="table-container">
-        <table id="candidatesTable" class="display">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Matrícula</th>
-                    <th>Cargo</th>
-                    <th>Nome</th>
-                    <th>Idade</th>
-                    <th>E-Mail</th>
-                    <th>CPF</th>
-                    <th>Telefone</th>
-                    <th>Cidade</th>
-                    <th>Deficiência</th>
-                    <th>Anexo</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Registros serão inseridos dinamicamente aqui -->
-            </tbody>
-        </table>
+        <div class="table-container">
+            <table id="candidatesTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>E-Mail</th>
+                        <th>CPF</th>
+                        <th>Telefone</th>
+                        <th>Cidade</th>
+                        <th>Deficiência</th>
+                        <th>Endereço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% appointment.forEach(item=> { %>
+                        <% if (item.userid && item.user) { %>
+                            <tr>
+
+                                <td>
+                                    <%= item.user.registration %>
+                                </td>
+                                <td>
+                                    <%= item.user.name %>
+                                </td>
+                                <td>
+                                    <%= item.user.email %>
+                                </td>
+                                <td>
+                                    <%= item.user.cpf %>
+                                </td>
+                                <td>
+                                    <%= item.user.tel %>
+                                </td>
+                                <td>
+                                    <%= item.user.city %>
+                                </td>
+                                <td>
+                                    <%= item.user.deficiency %>
+                                </td>
+                                <td>
+                                    <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>, <%=
+                                                    item.unit.address %>
+                                </td>
+                            </tr>
+                            <% } %>
+                                <% }); %>
+                </tbody>
+
+
+            </table>
+        </div>
     </div>
-</div>
 
-<!-- DataTables CDN -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+    <!-- DataTables CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
 
-<script>
-    $(document).ready(function () {
-        $('#candidatesTable').DataTable({
-            language: {
-                sProcessing: "Processando...",
-                sLengthMenu: "Mostrar _MENU_ registros",
-                sZeroRecords: "Nenhum registro encontrado",
-                sInfo: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                sInfoEmpty: "Mostrando 0 até 0 de 0 registros",
-                sInfoFiltered: "(filtrado de _MAX_ registros totais)",
-                sSearch: "Pesquisar:",
-                oPaginate: {
-                    sFirst: "Primeiro",
-                    sPrevious: "Anterior",
-                    sNext: "Próximo",
-                    sLast: "Último"
-                }
-            },
-            paging: true,
-            searching: true,
-            ordering: true,
-            order: [[0, 'asc']],
-            responsive: true
+    <script>
+        $(document).ready(function () {
+            $('#candidatesTable').DataTable({
+                language: {
+                    sProcessing: "Processando...",
+                    sLengthMenu: "Mostrar _MENU_ registros",
+                    sZeroRecords: "Nenhum registro encontrado",
+                    sInfo: "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                    sInfoEmpty: "Mostrando 0 até 0 de 0 registros",
+                    sInfoFiltered: "(filtrado de _MAX_ registros totais)",
+                    sSearch: "Pesquisar:",
+                    oPaginate: {
+                        sFirst: "Primeiro",
+                        sPrevious: "Anterior",
+                        sNext: "Próximo",
+                        sLast: "Último"
+                    }
+                },
+                paging: true,
+                searching: true,
+                ordering: true,
+                order: [[0, 'asc']],
+                responsive: true
+            });
         });
-    });
-</script>
+    </script>
 
-<%- include('../partials/footer.ejs') %>
+    <%- include('../partials/footer.ejs') %>
