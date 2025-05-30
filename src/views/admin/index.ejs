@@ -8,6 +8,7 @@
             <table id="candidatesTable" class="display">
                 <thead>
                     <tr>
+                        <th>Status</th>
                         <th>Matrícula</th>
                         <th>Nome</th>
                         <th>E-Mail</th>
@@ -23,6 +24,9 @@
                         <% if (item.userid && item.user) { %>
                             <tr>
 
+                                <td>
+                                    <%= item.status %>
+                                </td>
                                 <td>
                                     <%= item.user.registration %>
                                 </td>
