@@ -28,11 +28,9 @@ class CreateUsersControllers {
                 deficiency,
                 photo,
                 term,
+                id
             } = req.body;
 
-            const id = req.query.id;
-
-            console.log(id)
 
             const updateUsersService = new UpdateUsersService();
 

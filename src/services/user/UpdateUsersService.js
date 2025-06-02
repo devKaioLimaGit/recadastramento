@@ -31,6 +31,8 @@ class UpdateUsersService {
         id
     }) {
 
+        console.log(id)
+
         try {
             const userService = await Users.update({
                 name,
@@ -59,6 +61,7 @@ class UpdateUsersService {
                 photo,
                 term
             }, { where: { id: id } });
+
 
             return "Dados do usuário atualizados!";
         } catch (error) {

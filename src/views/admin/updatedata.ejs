@@ -1,11 +1,11 @@
 <%- include('../partials/header.ejs') %>
 <div class="container">
     <link rel="stylesheet" href="/css/formulario.css">
-    <form method="post" action="/user">
+    <form method="post" action="/admin/user">
         <div class="form-group">
             <label for="name">Nome Completo:</label>
             <input type="text" id="name" name="name" placeholder="Digite seu nome completo..." required
-                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos"/>
+                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" value="<%= usuario.name || '' %>"/>
         </div>
 
         <canvas id="bg-canvas"></canvas>
@@ -13,54 +13,54 @@
         <div class="form-group">
             <label for="socialname">Nome social:</label>
             <input type="text" id="socialname" name="socialname" placeholder="Digite seu nome social..." required
-                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
+                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" value="<%= usuario.socialname || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="cpf">CPF (Sem Ponto ou Hífen):</label>
             <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF..." required
-                oninput="validarCPF(this)" />
+                oninput="validarCPF(this)" value="<%= usuario.cpf || '' %>" />
             <span id="cpfErro" style="color: red; display: none;">CPF inválido!</span>
         </div>
 
         <div class="form-group">
             <label for="birth">Data de Nascimento:</label>
-            <input type="date" id="birth" name="birth" required />
+            <input type="date" id="birth" name="birth" required value="<%= usuario.birth || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="matricula">Matrícula (Sem Ponto ou Hífen):</label>
             <input type="text" id="matricula" name="registration" placeholder="Digite sua Matrícula" required
-                oninput="validarMatricula(this)" />
+                oninput="validarMatricula(this)" value="<%= usuario.registration || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="gender">Sexo:</label>
             <select id="gender" name="gender" required>
-                <option value="" disabled selected>Selecione seu sexo</option>
-                <option value="MASCULINO">MASCULINO</option>
-                <option value="FEMININO">FEMININO</option>
+                <option value="" disabled <%= !usuario.gender ? 'selected' : '' %>>Selecione seu sexo</option>
+                <option value="MASCULINO" <%= usuario.gender === 'MASCULINO' ? 'selected' : '' %>>MASCULINO</option>
+                <option value="FEMININO" <%= usuario.gender === 'FEMININO' ? 'selected' : '' %>>FEMININO</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="rg">RG ou Documento Oficial de Identificação (Sem Ponto):</label>
             <input type="text" id="rg" name="rg" placeholder="Digite seu RG..." required
-                oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0,11)" />
+                oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0,11)" value="<%= usuario.rg || '' %>"/>
         </div>
 
         <div class="form-group">
             <label for="organ">Órgão Emissor:</label>
             <input type="text" id="organ" name="organ" placeholder="Digite o órgão emissor..." required
-                oninput="this.value = this.value.replace(/[^A-Za-z0-9\/]/g, '').slice(0, 21)" />
+                oninput="this.value = this.value.replace(/[^A-Za-z0-9\/]/g, '').slice(0, 21)" value="<%= usuario.organ || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="uf">UF:</label>
             <select id="uf" name="uf" required>
-                <option value="" disabled selected>Selecione seu estado</option>
+                <option value="" disabled <%= !usuario.uf ? 'selected' : '' %>>Selecione seu estado</option>
                 <% ["AC","AL","AP","AM","BA","CE","DF","ES","GO","MA","MT","MS","MG","PA","PB","PR","PE","PI","RJ","RN","RS","RO","RR","SC","SP","SE","TO"].forEach(uf => { %>
-                    <option value="<%= uf %>"><%= uf %></option>
+                    <option value="<%= uf %>" <%= usuario.uf === uf ? 'selected' : '' %>><%= uf %></option>
                 <% }) %>
             </select>
         </div>
@@ -68,62 +68,62 @@
         <div class="form-group">
             <label for="civilstatus">Estado Civil:</label>
             <select id="civilstatus" name="civilstatus" required>
-                <option value="" disabled selected>Selecione seu estado civil</option>
-                <option value="SOLTEIRO">SOLTEIRO</option>
-                <option value="CASADO">CASADO</option>
-                <option value="DIVORCIADO">DIVORCIADO</option>
-                <option value="VIÚVO">VIÚVO</option>
-                <option value="SEPARADO">SEPARADO</option>
-                <option value="UNIÃO ESTÁVEL">UNIÃO ESTÁVEL</option>
+                <option value="" disabled <%= !usuario.civilstatus ? 'selected' : '' %>>Selecione seu estado civil</option>
+                <option value="SOLTEIRO" <%= usuario.civilstatus === 'SOLTEIRO' ? 'selected' : '' %>>SOLTEIRO</option>
+                <option value="CASADO" <%= usuario.civilstatus === 'CASADO' ? 'selected' : '' %>>CASADO</option>
+                <option value="DIVORCIADO" <%= usuario.civilstatus === 'DIVORCIADO' ? 'selected' : '' %>>DIVORCIADO</option>
+                <option value="VIÚVO" <%= usuario.civilstatus === 'VIÚVO' ? 'selected' : '' %>>VIÚVO</option>
+                <option value="SEPARADO" <%= usuario.civilstatus === 'SEPARADO' ? 'selected' : '' %>>SEPARADO</option>
+                <option value="UNIÃO ESTÁVEL" <%= usuario.civilstatus === 'UNIÃO ESTÁVEL' ? 'selected' : '' %>>UNIÃO ESTÁVEL</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="education">Escolaridade:</label>
             <select id="education" name="education" required>
-                <option value="" disabled selected>Selecione sua escolaridade</option>
-                <option value="FUNDAMENTAL">FUNDAMENTAL</option>
-                <option value="MÉDIO">MÉDIO</option>
-                <option value="SUPERIOR INCOMPLETO">SUPERIOR INCOMPLETO</option>
-                <option value="SUPERIOR COMPLETO">SUPERIOR COMPLETO</option>
-                <option value="ESPECIALIZAÇÃO">ESPECIALIZAÇÃO</option>
-                <option value="MESTRADO">MESTRADO</option>
-                <option value="DOUTORADO">DOUTORADO</option>
+                <option value="" disabled <%= !usuario.education ? 'selected' : '' %>>Selecione sua escolaridade</option>
+                <option value="FUNDAMENTAL" <%= usuario.education === 'FUNDAMENTAL' ? 'selected' : '' %>>FUNDAMENTAL</option>
+                <option value="MÉDIO" <%= usuario.education === 'MÉDIO' ? 'selected' : '' %>>MÉDIO</option>
+                <option value="SUPERIOR INCOMPLETO" <%= usuario.education === 'SUPERIOR INCOMPLETO' ? 'selected' : '' %>>SUPERIOR INCOMPLETO</option>
+                <option value="SUPERIOR COMPLETO" <%= usuario.education === 'SUPERIOR COMPLETO' ? 'selected' : '' %>>SUPERIOR COMPLETO</option>
+                <option value="ESPECIALIZAÇÃO" <%= usuario.education === 'ESPECIALIZAÇÃO' ? 'selected' : '' %>>ESPECIALIZAÇÃO</option>
+                <option value="MESTRADO" <%= usuario.education === 'MESTRADO' ? 'selected' : '' %>>MESTRADO</option>
+                <option value="DOUTORADO" <%= usuario.education === 'DOUTORADO' ? 'selected' : '' %>>DOUTORADO</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="mother">Nome completo da mãe:</label>
             <input type="text" id="mother" name="mother" placeholder="Digite o nome da sua mãe..." required
-                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
+                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" value="<%= usuario.mother || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="father">Nome completo do pai:</label>
             <input type="text" id="father" name="father" placeholder="Digite o nome do seu pai..." required
-                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" />
+                pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" value="<%= usuario.father || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="nationality">Nacionalidade:</label>
             <input type="text" id="nationality" name="nationality" placeholder="Digite sua nacionalidade..." required
                 pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos"
-                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" />
+                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" value="<%= usuario.nationality || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="cityofbirth">Naturalidade (Cidade):</label>
             <input type="text" id="cityofbirth" name="cityofbirth" placeholder="Digite sua naturalidade..." required
                 pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos"
-                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" />
+                oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" value="<%= usuario.cityofbirth || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="birthplacestate">Naturalidade (Estado):</label>
             <select id="birthplacestate" name="birthplacestate" required>
-                <option value="" disabled selected>Selecione seu estado</option>
+                <option value="" disabled <%= !usuario.birthplacestate ? 'selected' : '' %>>Selecione seu estado</option>
                 <% ["ACRE","ALAGOAS","AMAPÁ","AMAZONAS","BAHIA","CEARÁ","DISTRITO FEDERAL","ESPÍRITO SANTO","GOIÁS","MARANHÃO","MATO GROSSO","MATO GROSSO DO SUL","MINAS GERAIS","PARÁ","PARAÍBA","PARANÁ","PERNAMBUCO","PIAUÍ","RIO DE JANEIRO","RIO GRANDE DO NORTE","RIO GRANDE DO SUL","RONDÔNIA","RORAIMA","SANTA CATARINA","SÃO PAULO","SERGIPE","TOCANTINS"].forEach(estado => { %>
-                    <option value="<%= estado %>"><%= estado %></option>
+                    <option value="<%= estado %>" <%= usuario.birthplacestate === estado ? 'selected' : '' %>><%= estado %></option>
                 <% }) %>
             </select>
         </div>
@@ -131,81 +131,84 @@
         <div class="form-group">
             <label for="raceandcolor">Raça/Cor:</label>
             <select id="raceandcolor" name="raceandcolor" required>
-                <option value="" disabled selected>Selecione sua raça/cor</option>
-                <option value="BRANCA">BRANCA</option>
-                <option value="NEGRA">NEGRA</option>
-                <option value="PARDA">PARDA</option>
-                <option value="AMARELA">AMARELA</option>
-                <option value="INDÍGENA">INDÍGENA</option>
+                <option value="" disabled <%= !usuario.raceandcolor ? 'selected' : '' %>>Selecione sua raça/cor</option>
+                <option value="BRANCA" <%= usuario.raceandcolor === 'BRANCA' ? 'selected' : '' %>>BRANCA</option>
+                <option value="NEGRA" <%= usuario.raceandcolor === 'NEGRA' ? 'selected' : '' %>>NEGRA</option>
+                <option value="PARDA" <%= usuario.raceandcolor === 'PARDA' ? 'selected' : '' %>>PARDA</option>
+                <option value="AMARELA" <%= usuario.raceandcolor === 'AMARELA' ? 'selected' : '' %>>AMARELA</option>
+                <option value="INDÍGENA" <%= usuario.raceandcolor === 'INDÍGENA' ? 'selected' : '' %>>INDÍGENA</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" placeholder="Digite seu e-mail..." required />
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail..." required value="<%= usuario.email || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="tel">Telefone (DDD + Número Sem Hífen):</label>
             <input type="text" id="tel" name="tel" placeholder="DDNNNNNNN" required
-                oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0,11)" />
+                oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0,11)" value="<%= usuario.tel || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="zip">CEP (Sem Ponto ou Hífen):</label>
             <input type="text" id="zip" name="zip" placeholder="Digite seu CEP..." required
                 oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0, 8)"
-                onblur="getAddress(this.value)" />
+                onblur="getAddress(this.value)" value="<%= usuario.zip || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="address">Endereço:</label>
-            <input type="text" id="address" name="address" placeholder="Preenchimento automático..." required />
+            <input type="text" id="address" name="address" placeholder="Preenchimento automático..." required value="<%= usuario.address || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="housenumber">Número:</label>
             <input type="text" id="housenumber" name="housenumber" placeholder="Digite o número da casa..." required
-                oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0, 5)" />
+                oninput="this.value = this.value.replace(/[^\d]/g, '').slice(0, 5)" value="<%= usuario.housenumber || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="housecomplement">Complemento:</label>
             <select id="housecomplement" name="housecomplement">
-                <option value="" disabled selected>Selecione seu complemento</option>
-                <option value="APTO">APARTAMENTO</option>
-                <option value="CASA">CASA</option>
-                <option value="BLOCO">BLOCO</option>
-                <option value="ANDAR">ANDAR</option>
-                <option value="SALA">SALA</option>
-                <option value="OUTRO">OUTRO</option>
+                <option value="" <%= !usuario.housecomplement ? 'selected' : '' %>>Selecione seu complemento</option>
+                <option value="APTO" <%= usuario.housecomplement === 'APTO' ? 'selected' : '' %>>APARTAMENTO</option>
+                <option value="CASA" <%= usuario.housecomplement === 'CASA' ? 'selected' : '' %>>CASA</option>
+                <option value="BLOCO" <%= usuario.housecomplement === 'BLOCO' ? 'selected' : '' %>>BLOCO</option>
+                <option value="ANDAR" <%= usuario.housecomplement === 'ANDAR' ? 'selected' : '' %>>ANDAR</option>
+                <option value="SALA" <%= usuario.housecomplement === 'SALA' ? 'selected' : '' %>>SALA</option>
+                <option value="OUTRO" <%= usuario.housecomplement === 'OUTRO' ? 'selected' : '' %>>OUTRO</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="neighborhood">Bairro:</label>
-            <input type="text" id="neighborhood" name="neighborhood" placeholder="Preenchimento automático..." required />
+            <input type="text" id="neighborhood" name="neighborhood" placeholder="Preenchimento automático..." required value="<%= usuario.neighborhood || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="city">Cidade:</label>
-            <input type="text" id="city" name="city" placeholder="Preenchimento automático..." required />
+            <input type="text" id="city" name="city" placeholder="Preenchimento automático..." required value="<%= usuario.city || '' %>" />
         </div>
 
         <div class="form-group">
             <label for="deficiency">Pessoa com Deficiência:</label>
-            <select name="deficiency" id="deficiency">
-                <option value="SIM">SIM</option>
-                <option value="NÃO" selected>NÃO</option>
+            <select name="deficiency" id="deficiency" required>
+                <option value="SIM" <%= usuario.deficiency === 'SIM' ? 'selected' : '' %>>SIM</option>
+                <option value="NÃO" <%= usuario.deficiency === 'NÃO' ? 'selected' : '' %>>NÃO</option>
             </select>
         </div>
 
-
-
         <div class="form-term">
-            <input type="checkbox" id="term" name="term" required />
+            <input type="checkbox" id="term" name="term" required <%= usuario.term === 'true' ? 'checked' : '' %> />
             <label for="term">Aceite o <a href="/terms" target="_blank">termo de privacidade</a></label>
         </div>
+
+            <input type="text" value="<%=usuario.id%>" name="id"  style="visibility: hidden;"/>
+
+
+
 
         <div class="form-actions">
             <button type="submit">Enviar Cadastro</button>
