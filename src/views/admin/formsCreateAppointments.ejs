@@ -7,12 +7,12 @@
 <form action="/agendar-pre-cadastro" method="POST" class="form-agendamento">
   <h2>Agendamento de Pré-Cadastro</h2>
 
-  <label for="nome">Nome Completo:</label>
+  <!--<label for="nome">Nome Completo:</label>
   <input type="text" id="nome" name="nome" required>
 
-  <label for="telefone">Telefone:</label>
+  <!-<label for="telefone">Telefone:</label>
   <input type="tel" id="telefone" name="telefone" required placeholder="(00) 00000-0000">
-
+-->
   <label for="data">Data do Agendamento:</label>
   <input type="date" id="data" name="data" required>
 
@@ -24,7 +24,13 @@
   </select>
 
   <label for="vagas">Vagas:</label>
-  <select id="vagas" name="vagas"></select>
+  <select id="vagas" name="vagas">
+    <option value ="10">10</option>
+    <option value ="20">20</option>
+    <option value ="30">30</option>
+    <option value ="40">40</option>
+    <option value ="50">50</option>
+  </select>
 
   <button type="submit" class="btn-agendar">Agendar Cadastro</button>
 </form>

@@ -1,0 +1,32 @@
+<%- include('../partials/header.ejs') %>
+<link rel="stylesheet" href="/css/agendamento.css">
+
+<!-- Fundo Animado -->
+<canvas id="bg-canvas"></canvas>
+
+<form action="/agendar-pre-cadastro" method="POST" class="form-agendamento">
+
+
+
+
+  <label for="vagas">Local Livres:</label>
+  <select id="vagas" name="vagas">
+    <option value ="------">----</option>
+    <option value ="------">----</option>
+    <option value ="------">---</option>
+    <option value ="------">---</option>
+    <option value ="------">---</option>
+  <button type="submit" class="btn-agendar">Liberar Vagas</button>
+    </select>
+  <label for="vagas">Vagas:</label>
+  <select id="vagas" name="vagas">
+    <option value ="10">10</option>
+    <option value ="20">20</option>
+    <option value ="30">30</option>
+    <option value ="40">40</option>
+    <option value ="50">50</option>
+  </select>
+     <button type="submit" class="btn-agendar">Liberar</button>
+</form>
+<%- include('../partials/footer.ejs') %>
+
