@@ -32,6 +32,8 @@ class CreateUsersControllers {
 
             const id = req.query.id;
 
+            console.log(id)
+
             const updateUsersService = new UpdateUsersService();
 
             const userService = await updateUsersService.execute({

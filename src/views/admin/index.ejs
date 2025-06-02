@@ -1,4 +1,4 @@
-<%- include('../admin/header.ejs') %>
+<%- include('./header.ejs') %>
     <link rel="stylesheet" href="/css/tabela.css">
     <link rel="stylesheet" href="/css/admin.css">
     <canvas id="bg-canvas"></canvas>
@@ -18,6 +18,7 @@
                         <th>Cidade</th>
                         <th>Deficiência</th>
                         <th>Endereço</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +53,10 @@
                                 <td>
                                     <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>, <%=
                                                     item.unit.address %>
+                                </td>
+                                <td>
+
+                                    <a href="/admin/user/<%=item.id%>"><button>Atualizar</button></a>
                                 </td>
                             </tr>
                             <% } %>

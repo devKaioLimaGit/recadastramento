@@ -1,32 +1,19 @@
-<%- include('../partials/header.ejs') %>
+<%- include('./header.ejs') %>
 <link rel="stylesheet" href="/css/agendamento.css">
 
 <!-- Fundo Animado -->
 <canvas id="bg-canvas"></canvas>
 
-<form action="/agendar-pre-cadastro" method="POST" class="form-agendamento">
+<form action="/admin/unit" method="POST" class="form-agendamento">
 
 
+  <label for="unit">Nome do Local:</label>
+  <input type="text" name="unit" id="unit" placeholder="Digite o nome do local aqui">
+  <label for="address">Endereço:</label>
+  <input type="text" id="address" name="address" placeholder="Digite o endereço do local aqui">
 
 
-  <label for="vagas">Local Livres:</label>
-  <select id="vagas" name="vagas">
-    <option value ="------">----</option>
-    <option value ="------">----</option>
-    <option value ="------">---</option>
-    <option value ="------">---</option>
-    <option value ="------">---</option>
-  <button type="submit" class="btn-agendar">Liberar Vagas</button>
-    </select>
-  <label for="vagas">Vagas:</label>
-  <select id="vagas" name="vagas">
-    <option value ="10">10</option>
-    <option value ="20">20</option>
-    <option value ="30">30</option>
-    <option value ="40">40</option>
-    <option value ="50">50</option>
-  </select>
-     <button type="submit" class="btn-agendar">Liberar</button>
+     <button type="submit" class="btn-agendar">Cadastrar</button>
 </form>
 <%- include('../partials/footer.ejs') %>
 

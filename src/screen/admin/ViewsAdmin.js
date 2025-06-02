@@ -30,6 +30,11 @@ async home(req, res) {
         res.render("admin/unit.ejs")
     }
 
+    
+    async updatedata(req, res) {
+        res.render("admin/updatedata.ejs")
+    }
+
 
 }
 

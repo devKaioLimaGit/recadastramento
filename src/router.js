@@ -26,12 +26,14 @@ router.post("/user", CreateUsersController.handler);
 // Rotas ADM Telas:
 router.get("/admin", authenticateADM, ViewsAdmin.home);
 router.get("/admin/appointment", authenticateADM, ViewsAdmin.appointment);
+router.get("/admin/user/:id", authenticateADM, ViewsAdmin.updatedata);
 
 //Rota de envio:
 router.post("/admin/moderator", CreateAdminController.handler);
 router.post("/admin/unit", CreateUnitsController.handler);
 router.post("/admin/unit/:id", authenticateADM, UpdateUnitController.handler);
 router.post("/admin/appointment", CreateAppointmesntController.handler);
+router.post("/admin/user/:id", authenticateADM, );
 
 
 // Rotas Lowuser Telas:

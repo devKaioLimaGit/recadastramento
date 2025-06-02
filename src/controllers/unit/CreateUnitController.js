@@ -7,7 +7,7 @@ class CreateUnitsController {
             const createUnitsService = new CreateUnitsService();
             const unitService = await createUnitsService.execute({ unit, address });
 
-            res.status(200).json(unitService)
+            res.render("admin/sucess.ejs")
         } catch (error) {
             res.status(400).json({ error: error.message })
         }
