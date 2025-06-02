@@ -33,7 +33,7 @@ router.post("/admin/moderator", CreateAdminController.handler);
 router.post("/admin/unit", CreateUnitsController.handler);
 router.post("/admin/unit/:id", authenticateADM, UpdateUnitController.handler);
 router.post("/admin/appointment", CreateAppointmesntController.handler);
-router.post("/admin/user/:id", authenticateADM, );
+// router.post("/admin/user/:id", authenticateADM, );
 
 
 // Rotas Lowuser Telas:
