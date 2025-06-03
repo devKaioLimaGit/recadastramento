@@ -54,10 +54,10 @@
                                     <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>, <%=
                                                     item.unit.address %>
                                 </td>
-                                <td>
+                               <td>
+  <a href="/admin/user/<%= item.user.id %>"><button class="btn-atualizar">Atualizar</button></a>
+</td>
 
-                                    <a href="/admin/user/<%=item.user.id%>"><button>Atualizar</button></a>
-                                </td>
                             </tr>
                             <% } %>
                                 <% }); %>

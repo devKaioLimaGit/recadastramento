@@ -39,3 +39,27 @@
     tbody tr:nth-child(even) {
         background-color: #f2f2f2;
     }
+    /* Botão Atualizar */
+.btn-atualizar {
+  background-color: #1C4C7D; /* Azul institucional */
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-atualizar:hover {
+  background-color: #163b60;
+  transform: translateY(-1px);
+}
+
+/* Alinhar botão ao centro da célula */
+td {
+  vertical-align: middle;
+  text-align: center;
+}
