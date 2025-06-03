@@ -17,7 +17,7 @@ const router = Router();
 router.get("/", ViewsHome.home);
 router.post("/authenticate", AuthenticateModerateController.handler);
 router.get("/login", ViewsHome.login);
-router.get("/admin/unit", authenticateADM,ViewsAdmin.unit);
+router.get("/admin/unit", authenticateADM, authenticateADM,ViewsAdmin.unit);
 
 //Agendamento Usuário:
 router.post("/user", CreateUsersController.handler);
@@ -26,14 +26,14 @@ router.post("/user", CreateUsersController.handler);
 // Rotas ADM Telas:
 router.get("/admin", ViewsAdmin.home);
 router.get("/admin/appointment", authenticateADM, ViewsAdmin.appointment);
-router.get("/admin/user/:id", ViewsAdmin.updatedata);
+router.get("/admin/user/:id",  authenticateADM, ViewsAdmin.updatedata);
 
 //Rota de envio:
-router.post("/admin/moderator", CreateAdminController.handler);
-router.post("/admin/unit", CreateUnitsController.handler);
+router.post("/admin/moderator", authenticateADM, CreateAdminController.handler);
+router.post("/admin/unit",  authenticateADM, CreateUnitsController.handler);
 router.post("/admin/unit/:id", authenticateADM, UpdateUnitController.handler);
-router.post("/admin/appointment", CreateAppointmesntController.handler);
-router.post("/admin/user", UpdateUsersController.handler);
+router.post("/admin/appointment",  authenticateADM, CreateAppointmesntController.handler);
+router.post("/admin/user",  authenticateADM, UpdateUsersController.handler);
 
 
 // Rotas Lowuser Telas:
