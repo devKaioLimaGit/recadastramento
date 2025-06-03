@@ -73,7 +73,7 @@ class CreateUsersService {
 
         const appointments = await Appointments.update(
             { userid: userService.id },
-            { where: { id: availabletime } }
+            { where: { id: availabletime, status:"Agendado..." } }
         );
 
         return userService;

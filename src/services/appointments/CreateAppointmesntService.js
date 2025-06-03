@@ -8,7 +8,7 @@ class CreateAppointmesntService {
         //     throw new Error("Já foi criado esse agendamento!");
         // }
 
-        const appointmentsService = await Appointments.create({ day, unitid, turn, status });
+        const appointmentsService = await Appointments.create({ day, unitid, turn });
 
         return appointmentsService;
     }

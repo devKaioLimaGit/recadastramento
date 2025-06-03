@@ -26,12 +26,9 @@ class UpdateUsersService {
         neighborhood,
         city,
         deficiency,
-        photo,
-        term,
         id
     }) {
 
-        console.log(id)
 
         try {
             const userService = await Users.update({
@@ -57,9 +54,7 @@ class UpdateUsersService {
                 housecomplement,
                 neighborhood,
                 city,
-                deficiency,
-                photo,
-                term
+                deficiency
             }, { where: { id: id } });
 
 

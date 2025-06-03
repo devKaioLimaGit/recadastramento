@@ -26,8 +26,6 @@ class CreateUsersControllers {
                 neighborhood,
                 city,
                 deficiency,
-                photo,
-                term,
                 id
             } = req.body;
 
@@ -58,12 +56,10 @@ class CreateUsersControllers {
                 neighborhood,
                 city,
                 deficiency,
-                photo,
-                term,
                 id
             });
 
-            res.status(200).json({message: userService});
+            res.render("sucess.ejs");
         } catch (error) {
             res.status(400).json({ error: error.message });
 
