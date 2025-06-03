@@ -8,7 +8,7 @@ class UpdateUnitController {
             const updateUnitsService = new UpdateUnitsService();
             const unitService = await updateUnitsService.execute({ id, unit, address });
 
-            res.status(200).json({message: unitService})
+            res.render("sucessUnit.ejs")
         } catch (error) {
             res.status(400).json({ error: error.message })
         }
