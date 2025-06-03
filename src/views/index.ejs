@@ -201,19 +201,19 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="availabletime">Unidades Disponíveis para agendamento:</label>
-            <select id="availabletime" name="availabletime" required>
-                <option value="" disabled selected>Selecione um horário</option>
-                <% appointment.forEach(item => { %>
-                    <% if (!item.userid) { %>
-                        <option value="<%= item.id %>">
-                            <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
-                        </option>
-                    <% } %>
-                <% }) %>
-            </select>
-        </div>
+<div class="form-group">
+    <label for="availabletime">Unidades Disponíveis para agendamento:</label>
+    <select id="availabletime" name="availabletime" required>
+        <option value="" disabled selected>Selecione um horário</option>
+        <% appointment.forEach(item => { %>
+            <option value="<%= item.id %>">
+                <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
+                (<%= item.remaining %> vagas disponíveis)
+            </option>
+        <% }) %>
+    </select>
+</div>
+
 
         <div class="form-term">
             <input type="checkbox" id="term" name="term" required />
