@@ -3,9 +3,9 @@ const CreateAppointmesntService = require("../../services/appointments/CreateApp
 class CreateAppointmesntController {
     async handler(req, res) {
         try {
-            const { day, unitid, turn, status } = req.body;
+            const { day, unitid, turn, status, wave } = req.body;
             const createAppointmesntService = new CreateAppointmesntService();
-            const unitService = await createAppointmesntService.execute({ day, unitid, turn, status });
+            const unitService = await createAppointmesntService.execute({ day, unitid, turn, status, wave });
 
             res.render("sucessAppointments.ejs")
         } catch (error) {

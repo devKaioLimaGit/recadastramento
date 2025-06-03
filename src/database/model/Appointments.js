@@ -35,8 +35,12 @@ const Appointments = connection.define("appointments", {
     type: DataTypes.STRING(191),
     allowNull: false,
     defaultValue: "Não Agendado..."
-  }
+  },
 
+  wave: {
+    type: DataTypes.INTEGER,
+    allowNull: true,
+  },
 
 }, {
   tableName: "appointments",
@@ -64,7 +68,9 @@ Appointments.belongsTo(Units, {
 });
 
 
-Appointments.sync({ force: false });
+Appointments.sync({ force: false
+
+ });
 
 module.exports = Appointments
 

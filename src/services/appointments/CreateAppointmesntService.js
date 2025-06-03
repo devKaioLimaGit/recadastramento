@@ -1,14 +1,14 @@
 const Appointments = require("../../database/model/Appointments");
 
 class CreateAppointmesntService {
-    async execute({ day, unitid, turn, status }) {
-        // const appointmentsAlreadyExists = await Appointments.findOne({ where: { day: day } });
+    async execute({ day, unitid, turn, status, wave }) {
+        const appointmentsAlreadyExists = await Appointments.findOne({ where: { day: day } });
 
-        // if (appointmentsAlreadyExists) {
-        //     throw new Error("Já foi criado esse agendamento!");
-        // }
+        if (appointmentsAlreadyExists) {
+            throw new Error("Já foi criado esse agendamento!");
+        }
 
-        const appointmentsService = await Appointments.create({ day, unitid, turn });
+        const appointmentsService = await Appointments.create({ day, unitid, turn, wave });
 
         return appointmentsService;
     }
