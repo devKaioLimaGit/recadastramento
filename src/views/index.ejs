@@ -223,36 +223,45 @@
 
 <script>
     const select = document.querySelector("#availabletime");
-let optionsLoaded = false;
 
-select.addEventListener('focus', () => { 
-    if (optionsLoaded) return;
+    function formatDate(isoDate) {
+        const [year, month, day] = isoDate.split('-');
+        return `${day}/${month}/${year}`;
+    }
 
-    fetch('http://localhost:3000/api/appointments')
-        .then(response => response.json())
-        .then(data => {
-            select.innerHTML = '<option value="" disabled selected>Selecione um horário</option>';
-            console.log(data);
+    function loadAppointments() {
+        const selectedValue = select.value;
 
-            data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.id;
+        fetch('http://localhost:3000/api/appointments')
+            .then(response => response.json())
+            .then(data => {
+                select.innerHTML = '<option value="" disabled>Selecione um horário</option>';
 
-                // Formata a data para dia/mês/ano
-                const [year, month, day] = item.day.split('-');
-                const formattedDate = `${day}/${month}/${year}`;
+                data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.id;
+                    const formattedDate = formatDate(item.day);
 
-                option.textContent = `${formattedDate} - ${item.turn} | ${item.unit.unit}`;
-                select.appendChild(option);
+                    option.textContent = `${formattedDate} - ${item.turn} | ${item.unit?.unit || item.unitid}`;
+                    
+                    if (option.value === selectedValue) {
+                        option.selected = true;
+                    }
+
+                    select.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Erro ao carregar os horários:', error);
+                select.innerHTML = '<option value="" disabled>Erro ao carregar horários</option>';
             });
+    }
 
-            optionsLoaded = true;
-        })
-        .catch(error => {
-            console.error('Erro ao carregar os horários:', error);
-            select.innerHTML = '<option value="" disabled selected>Erro ao carregar horários</option>';
-        });
-});
+    // Atualiza ao focar (opcional)
+    select.addEventListener('focus', loadAppointments);
 
+    // Atualiza a cada 1 segundo
+    setInterval(loadAppointments, 1000);
 </script>
+
 <%- include('partials/footer.ejs') %>
