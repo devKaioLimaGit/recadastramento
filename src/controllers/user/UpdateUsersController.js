@@ -59,7 +59,7 @@ class CreateUsersControllers {
                 id
             });
 
-            res.render("sucessUpdata.ejs");
+            res.render("sucessupdate.ejs");
         } catch (error) {
             res.status(400).json({ error: error.message });
 

@@ -66,8 +66,7 @@ class CreateUsersControllers {
                 term
             });
 
-            // res.render("sucess.ejs");
-            res.json(userService)
+            res.render("sucess.ejs");
         } catch (error) {
             res.status(400).json({ error: error.message });
 
