@@ -1,6 +1,7 @@
 <%- include('../partials/header.ejs') %>
+<canvas id="bg-canvas"></canvas>
 
-
+<link rel="stylesheet" href="/css/tabela.css">
     <div class="container-table">
         <div class="table-container">
             <table id="candidatesTable">
@@ -24,32 +25,59 @@
             </table>
         </div>
     </div>
+<script>
+    $(document).ready(function () {
+        // Exemplo de dados fictícios para simulação
+        const data = [
+            { id: 1, matricula: '123', cargo: 'Analista', nome: 'João Silva', idade: 30, email: 'joao@email.com', cpf: '000.000.000-00', telefone: '(81) 99999-9999', cidade: 'Recife', deficiencia: 'Não' },
+            { id: 2, matricula: '124', cargo: 'Técnico', nome: 'Maria Souza', idade: 28, email: 'maria@email.com', cpf: '111.111.111-11', telefone: '(81) 98888-8888', cidade: 'Olinda', deficiencia: 'Sim'},
+        ];
 
-    <script>
-        $(document).ready(function () {
-            $('#candidatesTable').DataTable({
-                "language": {
-                    "sProcessing": "Processando...",
-                    "sLengthMenu": "Mostrar _MENU_ registros",
-                    "sZeroRecords": "Nenhum registro encontrado",
-                    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-                    "sInfoFiltered": "(filtrado de _MAX_ registros totais)",
-                    "sSearch": "Pesquisar:",
-                    "oPaginate": {
-                        "sFirst": "Primeiro",
-                        "sPrevious": "Anterior",
-                        "sNext": "Próximo",
-                        "sLast": "Último"
-                    }
-                },
-                "paging": true,
-                "searching": true,
-                "ordering": true,
-                "order": [[0, 'asc']],
-            });
+        const $tbody = $('#candidatesTable tbody');
+        data.forEach(candidato => {
+            const row = `
+                <tr>
+                    <td>${candidato.id}</td>
+                    <td>${candidato.matricula}</td>
+                    <td>${candidato.cargo}</td>
+                    <td>${candidato.nome}</td>
+                    <td>${candidato.idade}</td>
+                    <td>${candidato.email}</td>
+                    <td>${candidato.cpf}</td>
+                    <td>${candidato.telefone}</td>
+                    <td>${candidato.cidade}</td>
+                    <td>${candidato.deficiencia}</td>
+                    <td>                        <button class="atualizar-btn">Atualizar</button>
+                    </td>
+                </tr>
+            `;
+            $tbody.append(row);
         });
-    </script>
+
+        $('#candidatesTable').DataTable({
+            "language": {
+                "sProcessing": "Processando...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "Nenhum registro encontrado",
+                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+                "sInfoFiltered": "(filtrado de _MAX_ registros totais)",
+                "sSearch": "Pesquisar:",
+                "oPaginate": {
+                    "sFirst": "Primeiro",
+                    "sPrevious": "Anterior",
+                    "sNext": "Próximo",
+                    "sLast": "Último"
+                }
+            },
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "order": [[0, 'asc']],
+        });
+    });
+</script>
+
 
 
     <%- include('../partials/footer.ejs') %>
