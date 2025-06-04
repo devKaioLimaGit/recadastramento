@@ -203,12 +203,12 @@
 
 <div class="form-group">
     <label for="availabletime">Unidades Disponíveis para agendamento:</label>
-    <select id="availabletime" name="availabletime" required>
+    <select id="availabletime" name="availabletime" class="form-control" required>
         <option value="" disabled selected>Selecione um horário</option>
         <% appointment.forEach(item => { %>
             <option value="<%= item.id %>">
                 <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
-                (<%= item.remaining %> vagas disponíveis)
+                (<%= item.remaining %> vaga<%= item.remaining > 1 ? 's' : '' %> disponível<%= item.remaining > 1 ? 's' : '' %>)
             </option>
         <% }) %>
     </select>

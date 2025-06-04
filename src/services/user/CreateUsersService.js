@@ -38,8 +38,6 @@ class CreateUsersService {
             throw new Error("Usuário já cadastrado!");
         };
 
-
-
         const userService = await Users.create({
             name,
             socialname,
@@ -71,10 +69,15 @@ class CreateUsersService {
         });
 
 
+        console.log(userService.id )
+
         const appointments = await Appointments.update(
-            { userid: userService.id },
-            { where: { id: availabletime, status:"Agendado..." } }
+            { userid: userService.id,  status:"Agendado..." },
+            { where: { id: availabletime } }
         );
+
+
+        console.log(appointments)
 
         return userService;
     }

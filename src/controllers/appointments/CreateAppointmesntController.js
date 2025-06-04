@@ -8,6 +8,7 @@ class CreateAppointmesntController {
             const unitService = await createAppointmesntService.execute({ day, unitid, turn, status, wave });
 
             res.render("sucessAppointments.ejs")
+
         } catch (error) {
             res.status(400).json({ error: error.message })
         }

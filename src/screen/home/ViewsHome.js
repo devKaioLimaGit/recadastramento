@@ -10,10 +10,10 @@ class ViewsHome {
                     model: Units,
                     attributes: ['id', 'unit', 'address']
                 }
-            ]
+            ],
+            order: [['createdAt', 'ASC']] // Importante: garante a ordem de prioridade
         });
 
-        // Agrupar por combinação de day, unitid, turn
         const groupedAppointments = {};
 
         for (let appt of appointments) {
@@ -31,7 +31,6 @@ class ViewsHome {
             }
         }
 
-        // Criar array com apenas os horários que ainda têm vagas
         const availableAppointments = [];
 
         for (let key in groupedAppointments) {
