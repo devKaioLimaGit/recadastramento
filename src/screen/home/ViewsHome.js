@@ -3,50 +3,34 @@ const Appointments = require("../../database/model/Appointments");
 const Units = require("../../database/model/Units");
 
 class ViewsHome {
-    async home(req, res) {
-        const appointments = await Appointments.findAll({
-            include: [
-                {
-                    model: Units,
-                    attributes: ['id', 'unit', 'address']
-                }
-            ],
-            order: [['createdAt', 'ASC']] // Importante: garante a ordem de prioridade
-        });
-
-        const groupedAppointments = {};
-
-        for (let appt of appointments) {
-            const key = `${appt.day}-${appt.unitid}-${appt.turn}`;
-
-            if (!groupedAppointments[key]) {
-                groupedAppointments[key] = {
-                    ...appt.toJSON(),
-                    used: 0
-                };
+async home(req, res) {
+    const appointments = await Appointments.findAll({
+        include: [
+            {
+                model: Units,
+                attributes: ['id', 'unit', 'address']
             }
+        ],
+        order: [['createdAt', 'ASC']] // mantemos a ordem
+    });
 
-            if (appt.userid) {
-                groupedAppointments[key].used += 1;
-            }
+    const availableAppointments = [];
+
+    for (let appt of appointments) {
+        // conta quantas vagas já foram usadas com base no userid
+        const used = appt.userid ? 1 : 0;
+        const remaining = appt.wave - used;
+
+        if (remaining > 0) {
+            availableAppointments.push({
+                ...appt.toJSON(),
+                remaining
+            });
         }
-
-        const availableAppointments = [];
-
-        for (let key in groupedAppointments) {
-            const item = groupedAppointments[key];
-            const remaining = item.wave - item.used;
-
-            if (remaining > 0) {
-                availableAppointments.push({
-                    ...item,
-                    remaining
-                });
-            }
-        }
-
-        res.render("index.ejs", { appointment: availableAppointments });
     }
+
+    res.render("index.ejs", { appointment: availableAppointments });
+}
 
     async login(req, res) {
         res.render("login.ejs");

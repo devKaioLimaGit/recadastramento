@@ -204,15 +204,10 @@
 <div class="form-group">
     <label for="availabletime">Unidades Disponíveis para agendamento:</label>
     <select id="availabletime" name="availabletime" class="form-control" required>
-        <option value="" disabled selected>Selecione um horário</option>
-        <% appointment.forEach(item => { %>
-            <option value="<%= item.id %>">
-                <%= item.day %> - <%= item.turn %> | Unidade: <%= item.unit.unit %>
-                (<%= item.remaining %> vaga<%= item.remaining > 1 ? 's' : '' %> disponível<%= item.remaining > 1 ? 's' : '' %>)
-            </option>
-        <% }) %>
+        <option value="" disabled selected>Carregando horários...</option>
     </select>
 </div>
+
 
 
         <div class="form-term">
@@ -225,4 +220,39 @@
         </div>
     </form>
 </div>
+
+<script>
+    const select = document.querySelector("#availabletime");
+let optionsLoaded = false;
+
+select.addEventListener('focus', () => { 
+    if (optionsLoaded) return;
+
+    fetch('http://localhost:3000/api/appointments')
+        .then(response => response.json())
+        .then(data => {
+            select.innerHTML = '<option value="" disabled selected>Selecione um horário</option>';
+            console.log(data);
+
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+
+                // Formata a data para dia/mês/ano
+                const [year, month, day] = item.day.split('-');
+                const formattedDate = `${day}/${month}/${year}`;
+
+                option.textContent = `${formattedDate} - ${item.turn} | ${item.unit.unit}`;
+                select.appendChild(option);
+            });
+
+            optionsLoaded = true;
+        })
+        .catch(error => {
+            console.error('Erro ao carregar os horários:', error);
+            select.innerHTML = '<option value="" disabled selected>Erro ao carregar horários</option>';
+        });
+});
+
+</script>
 <%- include('partials/footer.ejs') %>

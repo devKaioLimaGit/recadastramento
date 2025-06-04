@@ -1,3 +1,6 @@
+const Appointments = require("./database/model/Appointments")
+const Units = require("./database/model/Units");
+
 const { Router } = require("express");
 const ViewsHome = require("./screen/home/ViewsHome");
 const ViewsAdmin = require("./screen/admin/ViewsAdmin");
@@ -42,6 +45,42 @@ router.get("/lowuser/forms", authenticateLowuser, ViewsLowuser.form);
 
 //Rota de envio:
 router.post("/lowuser/user/:id", authenticateLowuser, UpdateUsersController.handler);
+
+
+const { Op } = require("sequelize"); // importa o Op para usar operadores
+
+router.get("/api/appointments", async (req, res) => {
+  try {
+    const appointments = await Appointments.findAll({
+      where: {
+        userid: null,
+      },
+      include: [
+        {
+          model: Units,
+          attributes: ['id', 'unit', 'address']
+        }
+      ],
+      order: [['day', 'ASC'], ['createdAt', 'ASC']],
+    });
+
+    const uniqueAppointments = [];
+    const daysSeen = new Set();
+
+    for (const appt of appointments) {
+      if (!daysSeen.has(appt.day)) {
+        uniqueAppointments.push(appt);
+        daysSeen.add(appt.day);
+      }
+    }
+
+    res.json(uniqueAppointments);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Erro ao buscar agendamentos' });
+  }
+});
+
 
 
 module.exports = router;
