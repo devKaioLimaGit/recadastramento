@@ -232,7 +232,7 @@
     function loadAppointments() {
         const selectedValue = select.value;
 
-        fetch('http://localhost:3000/api/appointments')
+        fetch('https://recadastramento.paulista.pe.gov.br/api/appointments')
             .then(response => response.json())
             .then(data => {
                 select.innerHTML = '<option value="" disabled>Selecione um horário</option>';
