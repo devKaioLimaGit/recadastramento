@@ -32,6 +32,35 @@ class CreateUsersService {
         term
     }) {
 
+        console.log(name,
+            socialname,
+            cpf,
+            birth,
+            registration,
+            gender,
+            rg,
+            organ,
+            uf,
+            civilstatus,
+            education,
+            mother,
+            father,
+            nationality,
+            cityofbirth,
+            birthplacestate,
+            raceandcolor,
+            email,
+            tel,
+            zip,
+            address,
+            housenumber,
+            housecomplement,
+            neighborhood,
+            city,
+            deficiency,
+            availabletime,
+            term)
+
         const emailAlreadyExists = await Users.findOne({ where: { email: email } });
         const cpfAlreadyExists = await Users.findOne({ where: { cpf: cpf } });
         if (emailAlreadyExists || cpfAlreadyExists) {
@@ -69,10 +98,10 @@ class CreateUsersService {
         });
 
 
-        console.log(userService.id )
+        console.log(userService.id)
 
         const appointments = await Appointments.update(
-            { userid: userService.id,  status:"Agendado..." },
+            { userid: userService.id, status: "Agendado..." },
             { where: { id: availabletime } }
         );
 

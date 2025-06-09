@@ -23,7 +23,7 @@ router.get("/login", ViewsHome.login);
 router.get("/admin/unit", authenticateADM, authenticateADM, ViewsAdmin.unit);
 
 //Agendamento Usuário:
-router.post("/user", authenticateADM, CreateUsersController.handler);
+router.post("/user", CreateUsersController.handler);
 
 
 // Rotas ADM Telas:
