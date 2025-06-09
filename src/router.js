@@ -89,6 +89,11 @@ router.post("/logout", (req, res) => {
       console.error("Erro ao encerrar a sessão:", err);
       return res.status(500).json({ error: "Erro ao fazer logout" });
     }
+    
+
+    // router.get("/search/unit", async(req,res)=>{
+
+    // });
 
     res.clearCookie("connect.sid"); // ou o nome do cookie da sua sessão, se for diferente
     res.redirect("/login")

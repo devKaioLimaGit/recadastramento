@@ -17,9 +17,14 @@
   <input type="date" id="data" name="day" required>
 
 
-    <label for="horario">Local:</label>
-  <input type="text" id="horario" name="unitid" required>
-  </select>
+<label for="horario">Local:</label>
+<select name="unitid" id="horario">
+  <% units.forEach(unit => { %>
+    <option value="<%= unit.id %>">
+      <%= unit.unit %> - <%= unit.address %>
+    </option>
+  <% }) %>
+</select>
 
   <label for="horario">Horário Preferencial:</label>
   <select id="horario" name="turn" required>
